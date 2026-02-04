@@ -1,0 +1,131 @@
+/* Dark Theme - Apply dark background and light text globally */
+:root[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3d3d3d;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --border-color: #4d4d4d;
+  --accent-blue: #60a5fa;
+  --accent-purple: #a78bfa;
+  --accent-green: #4ade80;
+  --gradient-from: #1e3a8a;
+  --gradient-via: #6b21a8;
+  --gradient-to: #991b1b;
+}
+
+/* Apply theme colors to body and all backgrounds */
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .bg-white,
+:root[data-theme="dark"] .bg-gray-50,
+:root[data-theme="dark"] .bg-blue-50,
+:root[data-theme="dark"] .bg-purple-50,
+:root[data-theme="dark"] .bg-green-50,
+:root[data-theme="dark"] .bg-red-50,
+:root[data-theme="dark"] .bg-yellow-50,
+:root[data-theme="dark"] .bg-pink-50,
+:root[data-theme="dark"] .bg-orange-50 {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+:root[data-theme="dark"] .bg-gray-100,
+:root[data-theme="dark"] .bg-blue-100,
+:root[data-theme="dark"] .bg-purple-100,
+:root[data-theme="dark"] .bg-green-100,
+:root[data-theme="dark"] .bg-red-100,
+:root[data-theme="dark"] .bg-yellow-100,
+:root[data-theme="dark"] .bg-pink-100,
+:root[data-theme="dark"] .bg-orange-100 {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+:root[data-theme="dark"] .bg-blue-600,
+:root[data-theme="dark"] .bg-purple-600,
+:root[data-theme="dark"] .bg-green-600,
+:root[data-theme="dark"] .bg-red-600 {
+  background-color: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Override all text colors to be readable on dark background */
+:root[data-theme="dark"] .text-gray-500,
+:root[data-theme="dark"] .text-gray-600,
+:root[data-theme="dark"] .text-gray-700,
+:root[data-theme="dark"] .text-gray-800,
+:root[data-theme="dark"] .text-gray-900 {
+  color: var(--text-secondary) !important;
+}
+
+:root[data-theme="dark"] .text-blue-600,
+:root[data-theme="dark"] .text-blue-700,
+:root[data-theme="dark"] .text-blue-800,
+:root[data-theme="dark"] .text-blue-900 {
+  color: var(--accent-blue) !important;
+}
+
+:root[data-theme="dark"] .text-purple-600,
+:root[data-theme="dark"] .text-purple-700,
+:root[data-theme="dark"] .text-purple-900 {
+  color: var(--accent-purple) !important;
+}
+
+:root[data-theme="dark"] .text-green-600,
+:root[data-theme="dark"] .text-green-700 {
+  color: var(--accent-green) !important;
+}
+
+:root[data-theme="dark"] .text-red-600,
+:root[data-theme="dark"] .text-red-700 {
+  color: #f87171 !important;
+}
+
+:root[data-theme="dark"] .text-pink-600 {
+  color: #f9a8d4 !important;
+}
+
+:root[data-theme="dark"] .text-orange-600,
+:root[data-theme="dark"] .text-orange-700 {
+  color: #fb923c !important;
+}
+
+/* Override borders */
+:root[data-theme="dark"] .border-gray-200,
+:root[data-theme="dark"] .border-gray-300,
+:root[data-theme="dark"] .border-blue-200,
+:root[data-theme="dark"] .border-purple-200,
+:root[data-theme="dark"] .border-green-200,
+:root[data-theme="dark"] .border-red-200 {
+  border-color: var(--border-color) !important;
+}
+
+/* Override shadows for dark theme */
+:root[data-theme="dark"] .shadow-lg,
+:root[data-theme="dark"] .shadow-xl,
+:root[data-theme="dark"] .shadow-2xl {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Override gradients */
+:root[data-theme="dark"] .bg-gradient-to-br,
+:root[data-theme="dark"] .bg-gradient-to-r {
+  background-image: linear-gradient(to bottom right, var(--gradient-from), var(--gradient-via), var(--gradient-to)) !important;
+}
+
+/* Make sure all divs inherit proper colors */
+:root[data-theme="dark"] div {
+  color: inherit;
+}
+
+/* Cards and containers */
+:root[data-theme="dark"] .rounded-lg,
+:root[data-theme="dark"] .rounded-xl {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+/* Ensure badges and labels are visible */
+:root[data-theme="dark"] span {
+  color: inherit;
+}
