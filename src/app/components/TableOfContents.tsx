@@ -10,17 +10,18 @@ export function TableOfContents({ activeSection, onToggle }: TableOfContentsProp
   const [isOpen, setIsOpen] = useState(true); // Start open on desktop
 
   const sections = [
-    { id: 'hero', label: '1. Title + Outcomes' },
-    { id: 'problem', label: '2. The Problem' },
-    { id: 'solution', label: '3. What We\'re Proposing' },
-    { id: 'architecture', label: '4. System Architecture' },
-    { id: 'recommendation-logic', label: '5. How Recommendations Work' },
-    { id: 'user-experience', label: '6. Complete User Experience' },
-    { id: 'librarian-portal', label: '7. Librarian Admin Portal' },
-    { id: 'trust-safety', label: '8. Trust & Safety' },
-    { id: 'poc-scope', label: '9. PoC: Real vs Mocked' },
-    { id: 'phased-delivery', label: '10. 10-Week Delivery Plan' },
-    { id: 'kpis', label: '11. Success Metrics' }
+    { id: 'hero', label: '1. Overview' },
+    { id: 'problem-definition', label: '2. Success Metrics & Data' },
+    { id: 'system-architecture', label: '3. System Architecture' },
+    { id: 'user-workflow', label: '4. User Workflow' },
+    { id: 'architectural-decisions', label: '5. Architectural Decisions' },
+    { id: 'recommendation-engine', label: '6. Hybrid Recommender' },
+    { id: 'governance', label: '7. Governance & Iteration' },
+    { id: 'authentication', label: '8. Authentication' },
+    { id: 'production-readiness', label: '9. Production Readiness' },
+    { id: 'rollout', label: '10. Rollout Plan' },
+    { id: 'conclusion', label: '11. Conclusion' },
+    { id: 'live-demo', label: '12. Live Demo →' }
   ];
 
   const scrollToSection = (id: string) => {

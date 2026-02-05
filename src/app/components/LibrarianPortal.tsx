@@ -1,13 +1,16 @@
-import adminOverview from 'figma:asset/bf1a5a7a3314b193da46ca21b5adcee5b3739b96.png';
-import addBooks from 'figma:asset/21eee7bf6fbcec756aeba2f7f4c871ff004ad12a.png';
-import patronLookup from 'figma:asset/22eef85cf86b0be0ea281300ce70c3c61e17f8dd.png';
-import feedback from 'figma:asset/f01617e81e4e2c2ae760f839a4f349d4ddb52ba4.png';
-import settings from 'figma:asset/4f82e2d31ce05eb51cc69364d2573034ac6034c6.png';
-import { Shield, Users, BookPlus, Search, MessageSquare, Settings as SettingsIcon, Play, TrendingUp, X } from 'lucide-react';
 import { useState } from 'react';
+import { Shield, Database, Upload, BarChart3, PlayCircle, Users, Clock, CheckCircle, X, Settings } from 'lucide-react';
+import { LiveDemoPrompt } from './LiveDemoPrompt';
 
 export function LibrarianPortal() {
   const [modalImage, setModalImage] = useState<string | null>(null);
+
+  // Placeholder images for mockups
+  const adminOverview = "https://images.unsplash.com/photo-1759752394755-1241472b589d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXNoYm9hcmQlMjBhbmFseXRpY3MlMjBzY3JlZW4lMjBjb21wdXRlcnxlbnwxfHx8fDE3NzAzMDYxOTJ8MA&ixlib=rb-4.1.0&q=80&w=1080";
+  const addBooks = "https://images.unsplash.com/photo-1702026693653-5314debbd7f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsaWJyYXJ5JTIwYm9vayUyMGNhdGFsb2clMjBmb3JtfGVufDF8fHx8MTc3MDMwNjE5Mnww&ixlib=rb-4.1.0&q=80&w=1080";
+  const patronLookup = "https://images.unsplash.com/photo-1714427834153-473059d2fd88?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcHJlYWRzaGVldCUyMGRhdGFiYXNlJTIwcm93c3xlbnwxfHx8fDE3NzAzMDYxOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080";
+  const feedback = "https://images.unsplash.com/photo-1738152878182-869a3fc9e220?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmZWVkYmFjayUyMGZvcm0lMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzcwMzA2MTkyfDA&ixlib=rb-4.1.0&q=80&w=1080";
+  const settings = "https://images.unsplash.com/photo-1641567535859-c58187ac4954?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzZXR0aW5ncyUyMGNvbmZpZ3VyYXRpb24lMjBzY3JlZW58ZW58MXx8fHwxNzcwMzA2MTkyfDA&ixlib=rb-4.1.0&q=80&w=1080";
 
   const openModal = (imageSrc: string) => {
     setModalImage(imageSrc);
@@ -69,7 +72,7 @@ export function LibrarianPortal() {
           </div>
 
           <div className="bg-white bg-opacity-20 backdrop-blur rounded-xl p-6">
-            <TrendingUp className="w-8 h-8 mb-3" />
+            <BarChart3 className="w-8 h-8 mb-3" />
             <h4 className="font-bold text-lg mb-3">Operational Insights</h4>
             <p className="text-sm opacity-90">
               Track what students are reading, which books are popular, and which recommendations 
@@ -95,7 +98,7 @@ export function LibrarianPortal() {
             ✓ Working in PoC
           </span>
           <h3 className="text-2xl font-bold mt-3 flex items-center gap-3">
-            <TrendingUp className="w-7 h-7 text-purple-600" />
+            <BarChart3 className="w-7 h-7 text-purple-600" />
             1. Overview Dashboard
           </h3>
           <p className="text-gray-600 mt-2">
@@ -162,7 +165,7 @@ export function LibrarianPortal() {
             ✓ Working in PoC
           </span>
           <h3 className="text-2xl font-bold mt-3 flex items-center gap-3">
-            <BookPlus className="w-7 h-7 text-purple-600" />
+            <Upload className="w-7 h-7 text-purple-600" />
             2. Add Books to Collection
           </h3>
           <p className="text-gray-600 mt-2">
@@ -230,7 +233,7 @@ export function LibrarianPortal() {
             ✓ Working in PoC
           </span>
           <h3 className="text-2xl font-bold mt-3 flex items-center gap-3">
-            <Search className="w-7 h-7 text-purple-600" />
+            <Database className="w-7 h-7 text-purple-600" />
             3. Patron Lookup & Recommendations
           </h3>
           <p className="text-gray-600 mt-2">
@@ -303,7 +306,7 @@ export function LibrarianPortal() {
             ✓ Working in PoC
           </span>
           <h3 className="text-2xl font-bold mt-3 flex items-center gap-3">
-            <MessageSquare className="w-7 h-7 text-purple-600" />
+            <CheckCircle className="w-7 h-7 text-purple-600" />
             4. User Feedback & Quality Control
           </h3>
           <p className="text-gray-600 mt-2">
@@ -377,7 +380,7 @@ export function LibrarianPortal() {
             ✓ Working in PoC
           </span>
           <h3 className="text-2xl font-bold mt-3 flex items-center gap-3">
-            <SettingsIcon className="w-7 h-7 text-purple-600" />
+            <Settings className="w-7 h-7 text-purple-600" />
             5. System Settings & Debugging
           </h3>
           <p className="text-gray-600 mt-2">
@@ -471,12 +474,23 @@ export function LibrarianPortal() {
 
         <div className="mt-8 bg-white bg-opacity-10 backdrop-blur rounded-xl p-6">
           <p className="text-sm">
-            <strong>Bottom line:</strong> StoryPath isn't just an AI black box. It's a tool that 
-            amplifies librarian expertise — giving them superpowers to serve more students, faster, 
-            with better recommendations, while maintaining full control over content and policies.
+            <strong>Bottom line:</strong> StoryPath isn't just an AI black box. It's a tool that \n            amplifies librarian expertise — giving them superpowers to serve more students, faster, \n            with better recommendations, while maintaining full control over content and policies.
           </p>
         </div>
       </div>
+
+      {/* Live Demo Prompt */}
+      <LiveDemoPrompt 
+        title="Librarian Admin Dashboard"
+        description="Navigate the complete admin interface and see how librarians manage the system"
+        demoPoints={[
+          "View real-time analytics dashboard",
+          "Add books via ISBN lookup",
+          "Search patron history & get recommendations",
+          "Review user feedback & content moderation"
+        ]}
+        variant="secondary"
+      />
     </div>
   );
 }

@@ -5,10 +5,10 @@ export function PhasedDelivery() {
     <div className="py-20 px-6 max-w-6xl mx-auto">
       <div className="mb-12">
         <span className="text-purple-600 font-semibold uppercase text-sm tracking-wider">
-          Slide 10
+          Rollout Plan
         </span>
         <h2 className="text-5xl font-bold mt-2 mb-4">
-          10-Week Pro Bono Sprint
+          15-Week Pro Bono Sprint
         </h2>
         <p className="text-xl text-gray-600">
           Pro bono consulting project for Providence Library
@@ -128,17 +128,17 @@ export function PhasedDelivery() {
         <div className="mt-6 bg-white bg-opacity-10 backdrop-blur rounded-xl p-6">
           <p className="text-sm">
             <strong>What this means:</strong> StoryPath already has a working foundation with core recommendation 
-            logic, accessibility features, and privacy-first design implemented. The 10-week plan focuses on 
+            logic, accessibility features, and privacy-first design implemented. The 15-week plan focuses on 
             production data integration, scale testing, and librarian admin tools.
           </p>
         </div>
       </div>
 
-      {/* 10-Week Timeline */}
+      {/* 15-Week Timeline */}
       <div className="bg-white rounded-2xl p-10 shadow-xl mb-12">
         <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
           <Calendar className="w-8 h-8 text-blue-600" />
-          10-Week Sprint: PoC → Production Pilot
+          15-Week Sprint: PoC → Production Pilot
         </h3>
 
         <div className="space-y-8">
@@ -158,26 +158,26 @@ export function PhasedDelivery() {
               <li>• Confirm library system API access (card catalog + borrow history export)</li>
               <li>• Privacy constraints documentation (FERPA/COPPA compliance review)</li>
               <li>• Success metrics definition + baseline data collection plan</li>
-              <li>• Identify 2 pilot schools (1 elementary, 1 middle school)</li>
+              <li>• Identify 1 pilot library branch for initial testing</li>
             </ul>
             <div className="bg-blue-50 rounded-lg p-4">
               <p className="text-sm text-gray-700">
-                <strong>Deliverable:</strong> Technical integration spec + privacy compliance doc + pilot school sign-off
+                <strong>Deliverable:</strong> Technical integration spec + privacy compliance doc + pilot library sign-off
               </p>
             </div>
           </div>
 
-          {/* Week 3-5: Data Foundation */}
+          {/* Week 3-10: Data Foundation */}
           <div className="relative pl-8 border-l-4 border-purple-600">
             <div className="absolute -left-3 top-0 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
               2
             </div>
             <div className="mb-2">
               <span className="inline-block bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">
-                Weeks 3-5
+                Weeks 3-10
               </span>
             </div>
-            <h4 className="text-xl font-bold mb-2">Production Data Integration</h4>
+            <h4 className="text-xl font-bold mb-2">Production Data Integration & Development</h4>
             <ul className="text-sm text-gray-700 space-y-1 mb-4">
               <li>• Ingest Providence Library card catalog (~50K books)</li>
               <li>• Import anonymized borrow history (last 2 years) for collaborative signals</li>
@@ -185,22 +185,24 @@ export function PhasedDelivery() {
               <li>• Build co-borrow matrix + cohort popularity scores</li>
               <li>• Set up nightly ETL pipeline for new acquisitions</li>
               <li>• Supabase schema migration + pgvector index optimization</li>
+              <li>• Performance testing and optimization at scale</li>
+              <li>• Security hardening and penetration testing</li>
             </ul>
             <div className="bg-purple-50 rounded-lg p-4">
               <p className="text-sm text-gray-700">
-                <strong>Deliverable:</strong> Production database with 50K books + embeddings + automated sync
+                <strong>Deliverable:</strong> Production database with 50K books + embeddings + automated sync + tested performance
               </p>
             </div>
           </div>
 
-          {/* Week 6-7: Librarian Tools + ILS Integration */}
+          {/* Week 11-12: Librarian Tools + ILS Integration */}
           <div className="relative pl-8 border-l-4 border-green-600">
             <div className="absolute -left-3 top-0 w-6 h-6 bg-green-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
               3
             </div>
             <div className="mb-2">
               <span className="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">
-                Weeks 6-7
+                Weeks 11-12
               </span>
             </div>
             <h4 className="text-xl font-bold mb-2">Librarian Admin Portal + Real-Time Availability</h4>
@@ -218,53 +220,54 @@ export function PhasedDelivery() {
             </div>
           </div>
 
-          {/* Week 8: Pilot Deployment */}
+          {/* Week 13: Pilot Deployment */}
           <div className="relative pl-8 border-l-4 border-orange-600">
             <div className="absolute -left-3 top-0 w-6 h-6 bg-orange-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
               4
             </div>
             <div className="mb-2">
               <span className="inline-block bg-orange-100 text-orange-800 text-xs font-semibold px-3 py-1 rounded-full">
-                Week 8
+                Week 13
               </span>
             </div>
             <h4 className="text-xl font-bold mb-2">Pilot Deployment + Librarian Training</h4>
             <ul className="text-sm text-gray-700 space-y-1 mb-4">
-              <li>• Deploy iPads with StoryPath kiosks to 2 pilot schools</li>
+              <li>• Deploy iPads with StoryPath kiosks to 1 pilot library branch</li>
               <li>• 45-min librarian training session (monitoring, moderation, troubleshooting)</li>
-              <li>• Student orientation guides (1-page "How to Use StoryPath" handouts)</li>
+              <li>• Patron orientation materials (1-page "How to Use StoryPath" handouts)</li>
               <li>• Monitoring + alerting setup (error tracking, performance metrics)</li>
               <li>• Launch with 1-week office hours support</li>
             </ul>
             <div className="bg-orange-50 rounded-lg p-4">
               <p className="text-sm text-gray-700">
-                <strong>Deliverable:</strong> Live pilot in 2 schools + trained librarians + support plan
+                <strong>Deliverable:</strong> Live pilot in 1 library branch + trained librarians + support plan
               </p>
             </div>
           </div>
 
-          {/* Week 9-10: Monitor, Iterate, Document */}
+          {/* Week 14-15: Monitor, Iterate, Scale */}
           <div className="relative pl-8 border-l-4 border-red-600">
             <div className="absolute -left-3 top-0 w-6 h-6 bg-red-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
               5
             </div>
             <div className="mb-2">
               <span className="inline-block bg-red-100 text-red-800 text-xs font-semibold px-3 py-1 rounded-full">
-                Weeks 9-10
+                Weeks 14-15
               </span>
             </div>
-            <h4 className="text-xl font-bold mb-2">Data Collection + UX Refinement</h4>
+            <h4 className="text-xl font-bold mb-2">Data Collection, UX Refinement & System-Wide Rollout</h4>
             <ul className="text-sm text-gray-700 space-y-1 mb-4">
               <li>• Monitor real usage: query patterns, recommendation acceptance, checkout conversion</li>
               <li>• Weekly check-ins with pilot librarians (feedback, pain points, feature requests)</li>
-              <li>• UX refinements based on student usage (e.g., query rewording, UI tweaks)</li>
+              <li>• UX refinements based on patron usage (e.g., query rewording, UI tweaks)</li>
               <li>• Content filter tuning (age-appropriateness, family-safe adjustments)</li>
               <li>• Performance optimization (caching, query latency reduction)</li>
+              <li>• Begin library system-wide rollout preparation and deployment</li>
               <li>• Final pilot report: metrics, case studies, recommendations for scale</li>
             </ul>
             <div className="bg-red-50 rounded-lg p-4">
               <p className="text-sm text-gray-700">
-                <strong>Deliverable:</strong> Validated pilot + usage data + tuning recommendations + case studies
+                <strong>Deliverable:</strong> Validated pilot + usage data + tuning recommendations + system-wide rollout initiated
               </p>
             </div>
           </div>
@@ -272,7 +275,7 @@ export function PhasedDelivery() {
 
         <div className="mt-8 bg-gradient-to-r from-green-600 to-teal-600 rounded-xl p-6 text-white">
           <p className="text-center font-bold text-2xl">
-            Total: 10 weeks from kickoff to validated pilot
+            Total: 15 weeks from kickoff to library system-wide deployment
           </p>
           <p className="text-center text-sm mt-2 opacity-90">
             Pro bono engagement • Foundation already built in PoC • Focus on production readiness
@@ -291,7 +294,7 @@ export function PhasedDelivery() {
           <div className="border-l-4 border-blue-600 pl-6">
             <h4 className="font-bold mb-2 text-blue-900">Pilot First</h4>
             <p className="text-sm text-gray-700">
-              Start with 2 schools for 1 month data validation + UX iteration before scaling. 
+              Start with 1 library branch for validation + UX iteration before scaling. 
               Fail fast, learn, adjust.
             </p>
           </div>
@@ -299,7 +302,7 @@ export function PhasedDelivery() {
           <div className="border-l-4 border-purple-600 pl-6">
             <h4 className="font-bold mb-2 text-purple-900">Expand Gradually</h4>
             <p className="text-sm text-gray-700">
-              6-10 schools next, then district-wide. Each wave gets training templates + office 
+              Additional branches next, then library system-wide. Each wave gets training templates + office 
               hours for 2 weeks post-launch.
             </p>
           </div>
@@ -316,7 +319,7 @@ export function PhasedDelivery() {
         <div className="mt-8 bg-blue-50 rounded-xl p-6">
           <p className="text-sm text-gray-700">
             <strong>Training approach:</strong> 30-45 min librarian sessions, 1-page "how to use 
-            kiosk" guides for students, office hours for 2 weeks after each wave. Change management 
+            kiosk" guides for patrons, office hours for 2 weeks after each wave. Change management 
             lead ensures smooth adoption.
           </p>
         </div>

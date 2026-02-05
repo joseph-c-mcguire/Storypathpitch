@@ -1,4 +1,5 @@
-import { GitBranch, TrendingUp, Zap, MessageCircle } from 'lucide-react';
+import { Brain, Database, Filter, TrendingUp, Zap, GitBranch, MessageCircle } from 'lucide-react';
+import { LiveDemoPrompt } from './LiveDemoPrompt';
 
 export function CombinedRecommendationLogic() {
   return (
@@ -206,6 +207,19 @@ export function CombinedRecommendationLogic() {
           </p>
         </div>
       </div>
+
+      {/* Live Demo Prompt */}
+      <LiveDemoPrompt 
+        title="AI Recommendation Engine"
+        description="Watch the hybrid retrieval system and LLM-powered explanations in real-time"
+        demoPoints={[
+          "Chat query → LLM intent parsing",
+          "Vector search + collaborative filtering",
+          "Ranking algorithm in action",
+          "RAG-generated explanations"
+        ]}
+        variant="primary"
+      />
     </div>
   );
 }

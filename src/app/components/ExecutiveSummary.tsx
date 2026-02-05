@@ -1,4 +1,4 @@
-import { TrendingUp, Clock, DollarSign } from 'lucide-react';
+import { TrendingUp, Clock, DollarSign, Github } from 'lucide-react';
 
 export function ExecutiveSummary() {
   return (
@@ -19,6 +19,40 @@ export function ExecutiveSummary() {
           engagement at Providence Library by providing personalized, age-appropriate book suggestions
           through natural language interactions.
         </p>
+      </div>
+
+      {/* GitHub Repository Links */}
+      <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl p-6 mb-12">
+        <div className="flex items-center gap-3 mb-4">
+          <Github className="w-6 h-6 text-white" />
+          <h3 className="text-xl font-bold text-white">Open Source Code</h3>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <a 
+            href="https://github.com/joseph-c-mcguire/story-path"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white bg-opacity-10 hover:bg-opacity-20 transition-all rounded-lg p-4 flex items-center gap-3 group"
+          >
+            <Github className="w-5 h-5 text-blue-400 flex-shrink-0" />
+            <div>
+              <div className="text-white font-semibold group-hover:underline">StoryPath Application</div>
+              <div className="text-gray-300 text-sm">github.com/joseph-c-mcguire/story-path</div>
+            </div>
+          </a>
+          <a 
+            href="https://github.com/joseph-c-mcguire/Storypathpitch"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white bg-opacity-10 hover:bg-opacity-20 transition-all rounded-lg p-4 flex items-center gap-3 group"
+          >
+            <Github className="w-5 h-5 text-purple-400 flex-shrink-0" />
+            <div>
+              <div className="text-white font-semibold group-hover:underline">Presentation Code</div>
+              <div className="text-gray-300 text-sm">github.com/joseph-c-mcguire/Storypathpitch</div>
+            </div>
+          </a>
+        </div>
       </div>
 
       <div className="flex flex-wrap justify-center gap-8 mb-12">

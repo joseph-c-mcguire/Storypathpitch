@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import { OutcomesHero } from '@/app/components/OutcomesHero';
 import { TableOfContents } from '@/app/components/TableOfContents';
-import { ProblemSlide } from '@/app/components/ProblemSlide';
-import { SolutionSlide } from '@/app/components/SolutionSlide';
-import { ArchitectureDiagram } from '@/app/components/ArchitectureDiagram';
-import { CombinedRecommendationLogic } from '@/app/components/CombinedRecommendationLogic';
-import { UserExperience } from '@/app/components/UserExperience';
-import { LibrarianPortal } from '@/app/components/LibrarianPortal';
-import { TrustAndSafety } from '@/app/components/TrustAndSafety';
-import { PoCScope } from '@/app/components/PoCScope';
+import { ProblemDefinition } from '@/app/components/ProblemDefinition';
+import { OverallSystemFlow } from '@/app/components/OverallSystemFlow';
+import { UserWorkflowExample } from '@/app/components/UserWorkflowExample';
+import { ArchitecturalDecisions } from '@/app/components/ArchitecturalDecisions';
+import { RecommendationEngineComponent } from '@/app/components/RecommendationEngineComponent';
+import { GovernanceIteration } from '@/app/components/GovernanceIteration';
+import { AuthenticationUserManagement } from '@/app/components/AuthenticationUserManagement';
+import { ChangeManagementCICD } from '@/app/components/ChangeManagementCICD';
 import { PhasedDelivery } from '@/app/components/PhasedDelivery';
-import { KPIs } from '@/app/components/KPIs';
+import { SuccessMetricsConclusion } from '@/app/components/SuccessMetricsConclusion';
+import { LiveDemoTransition } from '@/app/components/LiveDemoTransition';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -18,16 +19,17 @@ export default function App() {
 
   const sections = [
     'hero',
-    'problem',
-    'solution',
-    'architecture',
-    'recommendation-logic',
-    'user-experience',
-    'librarian-portal',
-    'trust-safety',
-    'poc-scope',
-    'phased-delivery',
-    'kpis'
+    'problem-definition',
+    'system-architecture',
+    'user-workflow',
+    'architectural-decisions',
+    'recommendation-engine',
+    'governance',
+    'authentication',
+    'production-readiness',
+    'rollout',
+    'conclusion',
+    'live-demo'
   ];
 
   // Apply dark theme by default
@@ -124,44 +126,48 @@ export default function App() {
           <OutcomesHero />
         </section>
 
-        <section id="problem">
-          <ProblemSlide />
+        <section id="problem-definition">
+          <ProblemDefinition />
         </section>
 
-        <section id="solution">
-          <SolutionSlide />
+        <section id="system-architecture">
+          <OverallSystemFlow />
         </section>
 
-        <section id="architecture">
-          <ArchitectureDiagram />
+        <section id="user-workflow">
+          <UserWorkflowExample />
         </section>
 
-        <section id="recommendation-logic">
-          <CombinedRecommendationLogic />
+        <section id="architectural-decisions">
+          <ArchitecturalDecisions />
         </section>
 
-        <section id="user-experience">
-          <UserExperience />
+        <section id="recommendation-engine">
+          <RecommendationEngineComponent />
         </section>
 
-        <section id="librarian-portal">
-          <LibrarianPortal />
+        <section id="governance">
+          <GovernanceIteration />
         </section>
 
-        <section id="trust-safety">
-          <TrustAndSafety />
+        <section id="authentication">
+          <AuthenticationUserManagement />
         </section>
 
-        <section id="poc-scope">
-          <PoCScope />
+        <section id="production-readiness">
+          <ChangeManagementCICD />
         </section>
 
-        <section id="phased-delivery">
+        <section id="rollout">
           <PhasedDelivery />
         </section>
 
-        <section id="kpis">
-          <KPIs />
+        <section id="conclusion">
+          <SuccessMetricsConclusion />
+        </section>
+
+        <section id="live-demo">
+          <LiveDemoTransition />
         </section>
       </main>
     </div>
