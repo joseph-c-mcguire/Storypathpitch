@@ -160,7 +160,7 @@ const CODE_SNIPPETS = {
   'vector-search': {
     title: 'VectorService.search_books() Method',
     file: 'backend/app/services/vector.py',
-    lines: '202-260',
+    lines: '202-280',
     code: `async def search_books(
     self,
     query_text: str,
@@ -210,10 +210,41 @@ const CODE_SNIPPETS = {
         return None, str(e)`,
     highlights: [11, 14, 20, 21, 22, 23, 32, 33, 34, 35]
   },
+  'safety-filter': {
+    title: 'Safety Filtering Post-Search',
+    file: 'backend/app/api/recommendations.py',
+    lines: '165-202',
+    code: `def _apply_safety_filters(books: List[Dict[str, Any]], user_age: int) -> List[Dict[str, Any]]:
+    """Filter books based on age-appropriate content and remove unsafe keywords."""
+    
+    filtered_books = []
+    for book in books:
+        # Age bounds check
+        if book.get("age_range"):
+            min_age, max_age = book["age_range"]
+            if user_age < min_age or user_age > max_age:
+                continue
+        
+        # Unsafe keyword detection
+        if any(keyword in book.get("description", "").lower() for keyword in UNSAFE_KEYWORDS):
+            continue
+        
+        # Metadata parsing
+        book["authors"] = book.get("authors", [])
+        book["cover_url"] = book.get("cover_url", "")
+        book["popularity_score"] = book.get("popularity_score", 0)
+        book["rating"] = book.get("rating", 0)
+        book["borrow_count"] = book.get("borrow_count", 0)
+        
+        filtered_books.append(book)
+    
+    return filtered_books`,
+    highlights: [4, 5, 19, 20, 21, 22, 23, 24, 25, 26, 27, 41, 42, 43, 50]
+  },
   'llm-explanation': {
     title: 'LLM Explanation Generation',
     file: 'backend/app/api/recommendations.py',
-    lines: '232-280',
+    lines: '234-276',
     code: `async def _generate_chat_summary(user_message: str, books: List[BookResponse]) -> str:
     """Use LLM to craft a conversational summary for chat recommendations."""
     
@@ -272,7 +303,7 @@ const CODE_SNIPPETS = {
   'response-model': {
     title: 'RecommendationResponse Model',
     file: 'backend/app/db/models.py',
-    lines: '527-560',
+    lines: '527-571',
     code: `class RecommendationResponse(BaseModel):
     """Recommendation result."""
     type: str = Field(
@@ -489,37 +520,37 @@ export function UserWorkflowExample() {
 
         {/* Request Flow Diagram */}
         <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-8 border-2 border-gray-300">
-          <h4 className="text-2xl font-bold text-gray-900 mb-6">Request Flow: Chat Recommendation Example</h4>
+          <h4 className="text-2xl font-bold text-gray-900 mb-6">Request Flow: Chat Recommendation</h4>
           
           <div className="space-y-4">
             {/* Step 1: Initial Request */}
             <div className="bg-white rounded-lg p-5 border-2 border-purple-400 shadow-sm">
               <div className="flex items-center gap-3 mb-3">
                 <div className="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</div>
-                <div className="font-bold text-lg text-gray-900">User Request</div>
+                <div className="font-bold text-xl text-gray-900">User Request</div>
               </div>
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">Endpoint:</div>
-                  <div className="font-mono text-xs bg-purple-50 p-2 rounded border border-purple-200">POST /recommendations/chat</div>
+                  <div className="text-base font-semibold text-gray-700 mb-1">Endpoint:</div>
+                  <div className="font-mono text-sm bg-purple-50 p-2 rounded border border-purple-200">POST /recommendations/chat</div>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">Service Used:</div>
-                  <div className="text-sm text-gray-600">API Router → JWT Middleware</div>
+                  <div className="text-base font-semibold text-gray-700 mb-1">Service:</div>
+                  <div className="text-base text-gray-600">API Router → JWT</div>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">Request Body:</div>
-                  <div className="font-mono text-xs bg-gray-50 p-2 rounded border border-gray-200">
+                  <div className="text-base font-semibold text-gray-700 mb-1">Request Body:</div>
+                  <div className="font-mono text-sm bg-gray-50 p-2 rounded border border-gray-200">
                     {`{ message: "darker fantasy",`}<br/>
                     {`  age: 13,`}<br/>
                     {`  conversation_history: [] }`}
                   </div>
                   <button 
                     onClick={() => openCodeViewer('models-chat-request')}
-                    className="text-xs text-blue-600 hover:text-blue-800 hover:underline mt-1 cursor-pointer flex items-center gap-1"
+                    className="text-sm text-blue-600 hover:text-blue-800 hover:underline mt-1 cursor-pointer flex items-center gap-1"
                   >
                     <Code2 className="w-3 h-3" />
-                    See: ChatRecommendationRequest (models.py:493-520)
+                    ChatRecommendationRequest (models.py:493-520)
                   </button>
                 </div>
               </div>
@@ -529,54 +560,44 @@ export function UserWorkflowExample() {
             <div className="bg-green-50 rounded-lg p-5 border-2 border-green-400 shadow-sm">
               <div className="flex items-center gap-3 mb-3">
                 <div className="bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</div>
-                <div className="font-bold text-lg text-gray-900">Query Parsing</div>
+                <div className="font-bold text-xl text-gray-900">Query Parsing & Intent Detection</div>
                 <div className="flex items-center gap-2 ml-auto">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-xs text-gray-600">Parsing ✓</span>
-                  <div className="w-2 h-2 bg-green-500 rounded-full ml-2"></div>
-                  <span className="text-xs text-gray-600">LLM context ✓</span>
+                  <span className="text-sm text-gray-600">6 substeps</span>
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">Services Used:</div>
-                  <div className="text-sm text-gray-600">✅ AgentService (decide)</div>
-                  <div className="text-sm text-gray-600">✅ DeepSeek API</div>
-                  <div className="text-sm text-gray-400">Note: Conversation history passed in-request (not persisted)</div>
-                  <div className="flex gap-2 mt-1">
-                    <button 
-                      onClick={() => openCodeViewer('agent-decide')}
-                      className="text-xs text-blue-600 hover:text-blue-800 hover:underline cursor-pointer flex items-center gap-1"
-                    >
-                      <Code2 className="w-3 h-3" />
-                      agent.py:117-170
-                    </button>
-                    <button 
-                      onClick={() => openCodeViewer('agent-deepseek')}
-                      className="text-xs text-blue-600 hover:text-blue-800 hover:underline cursor-pointer flex items-center gap-1"
-                    >
-                      <Code2 className="w-3 h-3" />
-                      agent.py:260-320
-                    </button>
-                  </div>
+                  <div className="text-base font-semibold text-gray-700 mb-1">Services:</div>
+                  <div className="text-base text-gray-600">✅ AgentService</div>
+                  <div className="text-base text-gray-600">✅ DeepSeek API</div>
+                  <div className="text-base text-gray-600">✅ Guardrails (Gate 1)</div>
+                  <button 
+                    onClick={() => openCodeViewer('agent-decide')}
+                    className="text-sm text-blue-600 hover:text-blue-800 hover:underline mt-2 cursor-pointer flex items-center gap-1"
+                  >
+                    <Code2 className="w-3 h-3" />
+                    agent.py:117-170
+                  </button>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">Current Behavior:</div>
-                  <div className="text-sm text-gray-600">• Parse query with DeepSeek</div>
-                  <div className="text-sm text-gray-600">• Pass conversation history to LLM</div>
-                  <div className="text-sm text-gray-600">• Validate with Guardrails AI</div>
-                  <div className="text-sm text-amber-600 mt-1">DB conversation persistence (planned)</div>
+                  <div className="text-base font-semibold text-gray-700 mb-1">Substeps:</div>
+                  <div className="text-sm text-gray-600">2.1 Small talk detection</div>
+                  <div className="text-sm text-gray-600">2.2 DeepSeek parsing</div>
+                  <div className="text-sm text-gray-600">2.3 JSON extraction</div>
+                  <div className="text-sm text-gray-600">2.4 <strong>Gate 1:</strong> validate_agent_filters()</div>
+                  <div className="text-sm text-gray-600">2.5 Filter normalization</div>
+                  <div className="text-sm text-gray-600">2.6 Confidence threshold (0.55)</div>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">Output:</div>
-                  <div className="font-mono text-xs bg-gray-50 p-2 rounded border border-gray-200">
+                  <div className="text-base font-semibold text-gray-700 mb-1">Output:</div>
+                  <div className="font-mono text-sm bg-gray-50 p-2 rounded border border-gray-200">
                     {`{ action: "VECTOR_SEARCH",`}<br/>
                     {`  filters: {`}<br/>
                     {`    genres: ["fantasy"],`}<br/>
-                    {`    themes: ["dark"] },`}<br/>
+                    {`    tags: ["dark"] },`}<br/>
                     {`  confidence: 0.87 }`}
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">See: AgentDecision model</div>
                 </div>
               </div>
             </div>
@@ -585,45 +606,75 @@ export function UserWorkflowExample() {
             <div className="bg-cyan-50 rounded-lg p-5 border-2 border-cyan-400 shadow-sm">
               <div className="flex items-center gap-3 mb-3">
                 <div className="bg-cyan-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">3</div>
-                <div className="font-bold text-lg text-gray-900">Semantic Search</div>
-                <div className="flex items-center gap-2 ml-auto">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-xs text-gray-600">Search ✓</span>
-                  <div className="w-2 h-2 bg-amber-500 rounded-full ml-2"></div>
-                  <span className="text-xs text-gray-600">Deduplication (planned)</span>
-                </div>
+                <div className="font-bold text-xl text-gray-900">Semantic Search</div>
               </div>
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">Services Used:</div>
-                  <div className="text-sm text-gray-600">✅ VectorService</div>
-                  <div className="text-sm text-gray-600">✅ OpenAI Embeddings API</div>
-                  <div className="text-sm text-gray-600">✅ Supabase pgvector</div>
+                  <div className="text-base font-semibold text-gray-700 mb-1">Services:</div>
+                  <div className="text-base text-gray-600">✅ VectorService</div>
+                  <div className="text-base text-gray-600">✅ OpenAI Embeddings</div>
+                  <div className="text-base text-gray-600">✅ Supabase pgvector</div>
                   <button 
                     onClick={() => openCodeViewer('vector-search')}
-                    className="text-xs text-blue-600 hover:text-blue-800 hover:underline mt-1 cursor-pointer flex items-center gap-1"
+                    className="text-sm text-blue-600 hover:text-blue-800 hover:underline mt-2 cursor-pointer flex items-center gap-1"
                   >
                     <Code2 className="w-3 h-3" />
-                    See: vector.py:202-260
+                    vector.py:202-280
                   </button>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">Current Behavior:</div>
-                  <div className="text-sm text-gray-600">• Generate 1536-dim embedding</div>
-                  <div className="text-sm text-gray-600">• Supabase RPC search</div>
-                  <div className="text-sm text-gray-600">• Return: top 10 books (configurable)</div>
-                  <div className="text-sm text-amber-600 mt-1">Book deduplication (planned)</div>
+                  <div className="text-base font-semibold text-gray-700 mb-1">Processing:</div>
+                  <div className="text-base text-gray-600">• Query enrichment</div>
+                  <div className="text-base text-gray-600">• Redis cache check</div>
+                  <div className="text-base text-gray-600">• 1536-dim embedding</div>
+                  <div className="text-base text-gray-600">• Cosine similarity</div>
+                  <div className="text-base text-gray-600">• Cache (3600s TTL)</div>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">Implementation:</div>
-                  <div className="font-mono text-xs bg-gray-50 p-2 rounded border border-gray-200">
+                  <div className="text-base font-semibold text-gray-700 mb-1">RPC Call:</div>
+                  <div className="font-mono text-sm bg-gray-50 p-2 rounded border border-gray-200">
                     {`db.rpc("search_books", {`}<br/>
                     {`  query_embedding: [...],`}<br/>
                     {`  match_threshold: 0.5,`}<br/>
                     {`  match_count: 5`}<br/>
                     {`})`}
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">Uses pgvector cosine similarity</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 3.5: Post-Search Transformations */}
+            <div className="bg-indigo-50 rounded-lg p-5 border-2 border-indigo-400 shadow-sm">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="bg-indigo-600 text-white rounded-full w-9 h-8 flex items-center justify-center text-xs font-bold">3.5</div>
+                <div className="font-bold text-xl text-gray-900">Post-Search Transformations</div>
+              </div>
+              <div className="grid grid-cols-3 gap-4">
+                <div>
+                  <div className="text-base font-semibold text-gray-700 mb-1">Substeps:</div>
+                  <div className="text-sm text-gray-600">3.5.1 Rotation for variety</div>
+                  <div className="text-sm text-gray-600">3.5.2 <strong>Gate 2:</strong> Safety filter</div>
+                  <div className="text-sm text-gray-600">3.5.3 Book hydration</div>
+                  <button 
+                    onClick={() => openCodeViewer('safety-filter')}
+                    className="text-sm text-blue-600 hover:text-blue-800 hover:underline mt-2 cursor-pointer flex items-center gap-1"
+                  >
+                    <Code2 className="w-3 h-3" />
+                    recommendations.py:165-202
+                  </button>
+                </div>
+                <div>
+                  <div className="text-base font-semibold text-gray-700 mb-1">Safety (Gate 2):</div>
+                  <div className="text-base text-gray-600">✅ Age bounds check</div>
+                  <div className="text-base text-gray-600">✅ Unsafe keywords</div>
+                  <div className="text-base text-gray-600">✅ Metadata parsing</div>
+                </div>
+                <div>
+                  <div className="text-base font-semibold text-gray-700 mb-1">Book Hydration:</div>
+                  <div className="text-base text-gray-600">• Cover URL resolution</div>
+                  <div className="text-base text-gray-600">• Timestamp parsing</div>
+                  <div className="text-base text-gray-600">• Safe defaults</div>
+                  <div className="text-base text-gray-600">• Transform → BookResponse[]</div>
                 </div>
               </div>
             </div>
@@ -632,35 +683,34 @@ export function UserWorkflowExample() {
             <div className="bg-blue-50 rounded-lg p-5 border-2 border-blue-400 shadow-sm">
               <div className="flex items-center gap-3 mb-3">
                 <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">4</div>
-                <div className="font-bold text-lg text-gray-900">Generate Explanation</div>
-                <div className="w-2 h-2 bg-green-500 rounded-full ml-auto"></div>
+                <div className="font-bold text-xl text-gray-900">Explanation Generation</div>
               </div>
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">Services Used:</div>
-                  <div className="text-sm text-gray-600">✅ OpenAI Chat API (GPT-4o-mini)</div>
-                  <div className="text-sm text-gray-600">✅ Guardrails AI</div>
+                  <div className="text-base font-semibold text-gray-700 mb-1">Services:</div>
+                  <div className="text-base text-gray-600">✅ GPT-4o-mini</div>
+                  <div className="text-base text-gray-600">✅ Guardrails (Gate 3)</div>
                   <button 
                     onClick={() => openCodeViewer('llm-explanation')}
-                    className="text-xs text-blue-600 hover:text-blue-800 hover:underline mt-1 cursor-pointer flex items-center gap-1"
+                    className="text-sm text-blue-600 hover:text-blue-800 hover:underline mt-2 cursor-pointer flex items-center gap-1"
                   >
                     <Code2 className="w-3 h-3" />
-                    See: recommendations.py:232-280
+                    recommendations.py:234-276
                   </button>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">Processing:</div>
-                  <div className="text-sm text-gray-600">• RAG: inject book titles</div>
-                  <div className="text-sm text-gray-600">• Generate friendly summary</div>
-                  <div className="text-sm text-gray-600">• validate_chat_summary()</div>
-                  <div className="text-sm text-gray-600">• Fallback if validation fails</div>
+                  <div className="text-base font-semibold text-gray-700 mb-1">Processing:</div>
+                  <div className="text-base text-gray-600">• RAG: inject titles + authors</div>
+                  <div className="text-base text-gray-600">• temp=0.7, max=120 tokens</div>
+                  <div className="text-base text-gray-600">• <strong>Gate 3:</strong> validate_chat_summary()</div>
+                  <div className="text-base text-gray-600">• Fallback template</div>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">Example Output:</div>
-                  <div className="text-xs bg-gray-50 p-2 rounded border border-gray-200 text-gray-700">
+                  <div className="text-base font-semibold text-gray-700 mb-1">Output:</div>
+                  <div className="text-sm bg-gray-50 p-2 rounded border border-gray-200 text-gray-700">
                     "Here are darker fantasy tales with morally complex characters..."
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">XSS prevention + hallucination guards</div>
+                  <div className="text-sm text-gray-500 mt-1">XSS prevention + validation</div>
                 </div>
               </div>
             </div>
@@ -669,13 +719,12 @@ export function UserWorkflowExample() {
             <div className="bg-white rounded-lg p-5 border-2 border-purple-400 shadow-sm">
               <div className="flex items-center gap-3 mb-3">
                 <div className="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">5</div>
-                <div className="font-bold text-lg text-gray-900">Return to Frontend</div>
-                <div className="w-2 h-2 bg-green-500 rounded-full ml-auto"></div>
+                <div className="font-bold text-xl text-gray-900">Return to Frontend</div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">Response Format:</div>
-                  <div className="font-mono text-xs bg-purple-50 p-2 rounded border border-purple-200">
+                  <div className="text-base font-semibold text-gray-700 mb-1">Response Format:</div>
+                  <div className="font-mono text-sm bg-purple-50 p-2 rounded border border-purple-200">
                     {`{ type: "recommendations",`}<br/>
                     {`  books: [{ book_id, title,`}<br/>
                     {`    authors, popularity_score,`}<br/>
@@ -684,22 +733,20 @@ export function UserWorkflowExample() {
                     {`  tool: "vector_search",`}<br/>
                     {`  agent_decision: {...} }`}
                   </div>
-                  <div className="flex gap-2 mt-1">
-                    <button 
-                      onClick={() => openCodeViewer('response-model')}
-                      className="text-xs text-blue-600 hover:text-blue-800 hover:underline cursor-pointer flex items-center gap-1"
-                    >
-                      <Code2 className="w-3 h-3" />
-                      RecommendationResponse (models.py:527-560)
-                    </button>
-                  </div>
+                  <button 
+                    onClick={() => openCodeViewer('response-model')}
+                    className="text-sm text-blue-600 hover:text-blue-800 hover:underline mt-2 cursor-pointer flex items-center gap-1"
+                  >
+                    <Code2 className="w-3 h-3" />
+                    RecommendationResponse (models.py:527-571)
+                  </button>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">Frontend Rendering:</div>
-                  <div className="text-sm text-gray-600">✅ BookCard components display</div>
-                  <div className="text-sm text-gray-600">✅ Explanation shows above grid</div>
-                  <div className="text-sm text-gray-600">✅ Metadata: rating, borrow count</div>
-                  <div className="text-sm text-amber-600">Conversation persistence (planned)</div>
+                  <div className="text-base font-semibold text-gray-700 mb-1">Frontend:</div>
+                  <div className="text-base text-gray-600">✅ BookCard display</div>
+                  <div className="text-base text-gray-600">✅ Explanation</div>
+                  <div className="text-base text-gray-600">✅ Metadata</div>
+                  <div className="text-base text-amber-600">Conversation DB (planned)</div>
                 </div>
               </div>
             </div>
@@ -708,29 +755,29 @@ export function UserWorkflowExample() {
           {/* Considerations */}
           <div className="mt-6 grid grid-cols-2 gap-4">
             <div className="bg-orange-50 rounded-lg p-4 border-2 border-orange-300">
-              <div className="text-sm font-bold text-orange-900 mb-2">🛡️ Security & Validation (Implemented):</div>
-              <div className="text-sm text-gray-700 space-y-1">
-                <div>✅ <strong>Step 2:</strong> validate_agent_filters() prevents LLM injection</div>
-                <div>✅ <strong>Step 4:</strong> validate_chat_summary() prevents XSS</div>
-                <div>✅ <strong>All steps:</strong> JWT verified, RLS enforced at DB</div>
+              <div className="text-base font-bold text-orange-900 mb-2">🛡️ Security (3 Gates):</div>
+              <div className="text-base text-gray-700 space-y-1">
+                <div>✅ <strong>Gate 1:</strong> LLM injection prevention</div>
+                <div>✅ <strong>Gate 2:</strong> Age-appropriate filtering</div>
+                <div>✅ <strong>Gate 3:</strong> XSS/phishing prevention</div>
               </div>
             </div>
             <div className="bg-blue-50 rounded-lg p-4 border-2 border-blue-300">
-              <div className="text-sm font-bold text-blue-900 mb-2">⚡ Performance & Latency (Measured):</div>
-              <div className="text-sm text-gray-700 space-y-1">
+              <div className="text-base font-bold text-blue-900 mb-2">⚡ Performance:</div>
+              <div className="text-base text-gray-700 space-y-1">
                 <div>✅ <strong>Step 2:</strong> DeepSeek ~1-2.5s</div>
-                <div>✅ <strong>Step 3:</strong> OpenAI embed ~150-300ms, pgvector 10-50ms</div>
+                <div>✅ <strong>Step 3:</strong> Embedding ~150-300ms, pgvector ~10-50ms</div>
                 <div>✅ <strong>Step 4:</strong> GPT-4o-mini ~0.5-1.5s</div>
-                <div><strong>Total:</strong> ~2.5-4.5s (typical with caching)</div>
+                <div><strong>Total:</strong> ~2.5-4.5s (with caching)</div>
               </div>
             </div>
           </div>
 
           {/* Click instruction */}
           <div className="mt-4 text-center">
-            <div className="inline-flex items-center gap-2 text-sm text-gray-600 bg-blue-50 px-4 py-2 rounded-lg border border-blue-200">
+            <div className="inline-flex items-center gap-2 text-base text-gray-600 bg-blue-50 px-4 py-2 rounded-lg border border-blue-200">
               <Code2 className="w-4 h-4 text-blue-600" />
-              <span>Click any blue code reference to view full implementation with highlighted key sections</span>
+              <span>Click code references to view implementation</span>
             </div>
           </div>
         </div>
