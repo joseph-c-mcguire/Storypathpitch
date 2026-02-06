@@ -10,7 +10,7 @@ import {
 
 export function OutcomesHero() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white px-6">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-600 via-orange-700 to-red-800 text-white px-6">
       <div className="max-w-6xl">
         <div className="mb-8">
           <div className="inline-block bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg font-bold text-sm mb-4">
@@ -33,12 +33,8 @@ export function OutcomesHero() {
             </h3>
           </div>
           <p className="text-lg opacity-90 leading-relaxed">
-            Supporting Rhode Island's public libraries in their
-            mission to provide equitable access to literacy
-            resources. Aligned with state initiatives to
-            increase community engagement and build foundational
-            reading skills for all children, regardless of
-            economic background or library hours.
+            Supporting Rhode Island public libraries to provide equitable literacy access for all children, 
+            regardless of economic background or library hours.
           </p>
         </div>
 
@@ -61,7 +57,7 @@ export function OutcomesHero() {
             </div>
           </a>
           <a
-            href="https://github.com/joseph-c-mcguire/Storypathpitch"
+            href="https://github.com/joseph-c-mcguire/story-path-pitch"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur transition-all rounded-lg px-6 py-3 flex items-center gap-3 group"
@@ -72,7 +68,7 @@ export function OutcomesHero() {
                 This Presentation
               </div>
               <div className="text-sm opacity-75">
-                github.com/joseph-c-mcguire/Storypathpitch
+                github.com/joseph-c-mcguire/story-path-pitch
               </div>
             </div>
           </a>
@@ -85,30 +81,27 @@ export function OutcomesHero() {
               Empower Librarians
             </h3>
             <p className="text-sm opacity-90">
-              Extend their expertise beyond library hours, not
-              replace their knowledge
+              Extend expertise beyond library hours (validated in Weeks 1-2)
             </p>
           </div>
 
           <div className="bg-white bg-opacity-10 backdrop-blur rounded-2xl p-6">
             <Target className="w-10 h-10 mb-3 text-yellow-300" />
             <h3 className="font-bold text-xl mb-2">
-              Always-On During Library Hours
+              Always-On Access
             </h3>
             <p className="text-sm opacity-90">
-              Self-service recommendations without needing to
-              find a librarian
+              Self-service recommendations anytime
             </p>
           </div>
 
           <div className="bg-white bg-opacity-10 backdrop-blur rounded-2xl p-6">
             <BookOpen className="w-10 h-10 mb-3 text-blue-300" />
             <h3 className="font-bold text-xl mb-2">
-              Hybrid AI
+              AI-Powered Search
             </h3>
             <p className="text-sm opacity-90">
-              Borrowing patterns + LLM-powered metadata analysis
-              for quality recommendations
+              Natural language + semantic matching (collaborative filtering in Phase 2)
             </p>
           </div>
 
@@ -118,8 +111,7 @@ export function OutcomesHero() {
               Measurable Impact
             </h3>
             <p className="text-sm opacity-90">
-              Track checkout rate, repeat engagement, and
-              recommendation diversity metrics
+              Track checkouts, engagement, and diversity
             </p>
           </div>
         </div>

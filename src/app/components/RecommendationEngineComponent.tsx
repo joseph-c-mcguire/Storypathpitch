@@ -78,13 +78,14 @@ Age-appropriate filtering → LLM explanations (GPT-4o-mini)`}
             {/* Planned Formula */}
             <div className="bg-slate-950 rounded-xl shadow-lg p-8 border-2 border-amber-500">
               <div className="flex items-center justify-between mb-4">
-                <div className="text-amber-400 text-sm">⚠ P1 Priority: Hybrid Scoring Enhancement</div>
+                <div className="text-amber-400 text-sm">⚠ Planned Enhancement (Not Yet Implemented)</div>
                 <div className="text-xs text-gray-400">Hybrid scoring with collaborative filtering</div>
               </div>
               <pre className="text-amber-400 text-xl font-mono">
-{`final_score = 0.40 × vector_sim + 0.35 × collab + 0.15 × pop + 0.10 × recency
+{`# PROPOSED for Phase 2 (not currently available)
+final_score = 0.40 × vector_sim + 0.35 × collab + 0.15 × pop + 0.10 × recency
 
-Implementation: 3-4 weeks • Requires borrowing history data`}
+Implementation: 5-7 weeks • Requires borrowing history data`}
               </pre>
             </div>
 
@@ -134,21 +135,21 @@ score = avg_ratings(
               </div>
 
               {/* Popularity by Cohort */}
-              <div className="bg-orange-50 rounded-xl p-6 border-2 border-orange-400 opacity-70">
+              <div className="bg-green-50 rounded-xl p-6 border-2 border-green-500">
                 <div className="flex items-center justify-between mb-2">
-                  <div className="text-4xl font-bold text-orange-600">20%</div>
-                  <div className="text-xs bg-blue-500 text-white px-2 py-1 rounded font-semibold">PARTIAL</div>
+                  <div className="text-4xl font-bold text-green-700">100%</div>
+                  <div className="text-xs bg-green-500 text-white px-2 py-1 rounded font-semibold">✓ COMPLETE</div>
                 </div>
-                <div className="font-bold text-xl text-orange-800 mb-4">Age Filtering</div>
+                <div className="font-bold text-xl text-green-900 mb-4">Age Filtering</div>
                 <div className="bg-slate-900 rounded-lg p-4 font-mono text-xs text-gray-300 mb-4">
-{`# Age range filtering
+{`# Age range filtering ✓
 .gte("age_max", user_age)
 .lte("age_min", user_age)
 
-# Cohort popularity: planned`}
+# See: recommendations.py:170-213`}
                 </div>
                 <div className="text-sm text-gray-700">
-                  Age filtering works; cohort-aware popularity not yet implemented
+                  Fully functional age filtering. Cohort-aware popularity is a separate Phase 2 feature (not started).
                 </div>
               </div>
 
@@ -386,8 +387,11 @@ recency_score = exp(-days_since_added / 90)  # 90-day half-life
                     <div className="font-bold text-xl text-gray-900">4. Diversity Re-ranking</div>
                     <div className="text-sm bg-gray-500 text-white px-3 py-1 rounded">Priority 4 • 1 week</div>
                   </div>
-                  <div className="text-sm text-gray-700 mb-3">
+                  <div className="text-sm text-gray-700 mb-2">
                     Shannon entropy penalty to prevent filter bubbles (if &gt;70% same genre, apply 15% penalty)
+                  </div>
+                  <div className="text-xs bg-blue-50 border border-blue-300 rounded p-2 text-blue-800">
+                    Note: Basic rotation (_rotate_recommendations) already implemented. Entropy-based diversity pending.
                   </div>
                 </div>
 
@@ -405,12 +409,12 @@ recency_score = exp(-days_since_added / 90)  # 90-day half-life
                       </div>
                     </div>
                     <div className="bg-white bg-opacity-20 backdrop-blur rounded p-4">
-                      <div className="font-bold mb-2">Phase 2 (3-4 weeks)</div>
+                      <div className="font-bold mb-2">Phase 2 (5-7 weeks)</div>
                       <div className="text-xs space-y-1">
-                        <div>+ Collaborative filtering</div>
-                        <div>+ Cohort popularity</div>
-                        <div>+ Recency boost</div>
-                        <div>+ Diversity ranking</div>
+                        <div>+ Collaborative filtering (3-4w)</div>
+                        <div>+ Cohort popularity (1w)</div>
+                        <div>+ Recency boost (3-5d)</div>
+                        <div>+ Diversity ranking (1w)</div>
                       </div>
                     </div>
                     <div className="bg-white bg-opacity-20 backdrop-blur rounded p-4">

@@ -8,7 +8,7 @@ import { ArchitecturalDecisions } from '@/app/components/ArchitecturalDecisions'
 import { RecommendationEngineComponent } from '@/app/components/RecommendationEngineComponent';
 import { AuthenticationUserManagement } from '@/app/components/AuthenticationUserManagement';
 import { ChangeManagementCICD } from '@/app/components/ChangeManagementCICD';
-import { MonitoringObservability } from '@/app/components/MonitoringObservability';
+import { EvaluationFramework } from '@/app/components/EvaluationFramework';
 import { GovernanceIteration } from '@/app/components/GovernanceIteration';
 import { PhasedDelivery } from '@/app/components/PhasedDelivery';
 import { SuccessMetricsConclusion } from '@/app/components/SuccessMetricsConclusion';
@@ -118,6 +118,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
+      {/* Mobile Warning Banner */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-orange-600 text-white py-3 px-4 text-center text-sm font-semibold shadow-lg lg:hidden">
+        ⚠️ This presentation is optimized for desktop viewing. Please use a desktop or laptop screen for the best experience.
+      </div>
+
       <TableOfContents 
         activeSection={activeSection} 
         onToggle={setIsSidebarOpen}
@@ -157,7 +162,7 @@ export default function App() {
         </section>
 
         <section id="monitoring">
-          <MonitoringObservability />
+          <EvaluationFramework />
         </section>
 
         <section id="governance">

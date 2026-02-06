@@ -38,13 +38,14 @@ export function LiveDemoTransition() {
             <p className="text-3xl text-white font-semibold">
               Switching to Live Prototype
             </p>
-            <ExternalLink className="w-12 h-12 text-cyan-300" />
           </div>
 
           <div className="bg-yellow-500 bg-opacity-20 backdrop-blur rounded-xl p-6 mb-8 border border-yellow-400 border-opacity-40">
             <p className="text-xl text-yellow-100">
-              <strong>Demo Context:</strong> This prototype uses sample book data to validate core functionality. 
-              Providence Library integration happens in Weeks 3-10 of the rollout plan.
+              <strong>Demo Context:</strong> This prototype uses
+              sample book data to validate core functionality.
+              Providence Library integration happens in Weeks
+              3-10 of the rollout plan.
             </p>
           </div>
 
@@ -60,7 +61,9 @@ export function LiveDemoTransition() {
                   <h4 className="text-2xl font-bold text-white">
                     User Experience
                   </h4>
-                  <span className="bg-green-500 text-white text-sm font-bold px-3 py-1 rounded-full">✓ READY</span>
+                  <span className="bg-green-500 text-white text-sm font-bold px-3 py-1 rounded-full">
+                    ✓ READY
+                  </span>
                 </div>
                 <ul className="space-y-3 text-lg text-white text-opacity-90">
                   <li>• Anonymous & patron login</li>
@@ -76,7 +79,9 @@ export function LiveDemoTransition() {
                   <h4 className="text-2xl font-bold text-white">
                     AI Engine
                   </h4>
-                  <span className="bg-green-500 text-white text-sm font-bold px-3 py-1 rounded-full">✓ READY</span>
+                  <span className="bg-green-500 text-white text-sm font-bold px-3 py-1 rounded-full">
+                    ✓ READY
+                  </span>
                 </div>
                 <ul className="space-y-3 text-lg text-white text-opacity-90">
                   <li>• LLM intent parsing (DeepSeek)</li>
@@ -92,13 +97,19 @@ export function LiveDemoTransition() {
                   <h4 className="text-2xl font-bold text-white">
                     Librarian Portal
                   </h4>
-                  <span className="bg-yellow-500 text-white text-sm font-bold px-3 py-1 rounded-full">⚠️ IN PROGRESS</span>
+                  <span className="bg-yellow-500 text-white text-sm font-bold px-3 py-1 rounded-full">
+                    ⚠️ IN PROGRESS
+                  </span>
                 </div>
                 <ul className="space-y-3 text-lg text-white text-opacity-90">
                   <li>• Backend APIs ready</li>
                   <li>• UI in development</li>
                   <li>• Analytics endpoints built</li>
-                  <li><span className="text-gray-300">Dashboard UI (Weeks 11-12)</span></li>
+                  <li>
+                    <span className="text-gray-300">
+                      Dashboard UI (Weeks 11-12)
+                    </span>
+                  </li>
                 </ul>
               </div>
 
@@ -107,13 +118,31 @@ export function LiveDemoTransition() {
                   <h4 className="text-2xl font-bold text-white">
                     Advanced Features
                   </h4>
-                  <span className="bg-blue-500 text-white text-sm font-bold px-3 py-1 rounded-full">🔄 PHASE 2</span>
+                  <span className="bg-blue-500 text-white text-sm font-bold px-3 py-1 rounded-full">
+                    🔄 PHASE 2
+                  </span>
                 </div>
                 <ul className="space-y-3 text-lg text-white text-opacity-90">
-                  <li><span className="text-gray-300">Collaborative filtering</span></li>
-                  <li><span className="text-gray-300">Real-time availability</span></li>
-                  <li><span className="text-gray-300">Barcode scanner</span></li>
-                  <li><span className="text-gray-300">Full ILS integration</span></li>
+                  <li>
+                    <span className="text-gray-300">
+                      Collaborative filtering
+                    </span>
+                  </li>
+                  <li>
+                    <span className="text-gray-300">
+                      Real-time availability
+                    </span>
+                  </li>
+                  <li>
+                    <span className="text-gray-300">
+                      Barcode scanner
+                    </span>
+                  </li>
+                  <li>
+                    <span className="text-gray-300">
+                      Full ILS integration
+                    </span>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -121,12 +150,6 @@ export function LiveDemoTransition() {
         </div>
 
         {/* Action Prompt */}
-        <div className="flex items-center justify-center gap-4">
-          <MousePointer className="w-10 h-10 text-purple-300 animate-bounce" />
-          <p className="text-3xl text-white font-light">
-            Press any key to continue to prototype demo →
-          </p>
-        </div>
       </div>
     </div>
   );

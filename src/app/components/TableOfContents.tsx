@@ -11,17 +11,17 @@ export function TableOfContents({ activeSection, onToggle }: TableOfContentsProp
 
   const sections = [
     { id: 'hero', label: '1. Overview' },
-    { id: 'problem-definition', label: '2. Success Metrics & Data' },
+    { id: 'problem-definition', label: '2. Success Metrics & Context' },
     { id: 'system-architecture', label: '3. System Architecture' },
-    { id: 'user-workflow', label: '4. User Workflow' },
+    { id: 'user-workflow', label: '4. User Experience Flow' },
     { id: 'architectural-decisions', label: '5. Architectural Decisions' },
-    { id: 'recommendation-engine', label: '6. Hybrid Recommender' },
-    { id: 'authentication', label: '7. Authentication' },
-    { id: 'production-readiness', label: '8. Production Readiness' },
-    { id: 'monitoring', label: '9. Monitoring & Observability' },
+    { id: 'recommendation-engine', label: '6. Recommendation Engine' },
+    { id: 'authentication', label: '7. Authentication & User Management' },
+    { id: 'production-readiness', label: '8. Change Management & CI/CD' },
+    { id: 'monitoring', label: '9. Evaluation Framework' },
     { id: 'governance', label: '10. Governance & Iteration' },
-    { id: 'rollout', label: '11. Rollout Plan' },
-    { id: 'conclusion', label: '12. Conclusion' },
+    { id: 'rollout', label: '11. Phased Delivery & Timeline' },
+    { id: 'conclusion', label: '12. Success Metrics & Conclusion' },
     { id: 'live-demo', label: '13. Live Demo →' }
   ];
 

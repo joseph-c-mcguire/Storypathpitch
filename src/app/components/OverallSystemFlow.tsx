@@ -19,17 +19,16 @@ export function OverallSystemFlow() {
         {/* Header */}
         <div className="mt-4 mb-6">
           <h2 className="text-4xl font-bold text-white mb-2">
-            Overall System Flow
+            System Architecture
           </h2>
           <p className="text-base text-gray-300">
-            Monolithic FastAPI backend with service layer
-            pattern • PostgreSQL + pgvector for semantic search
+            Monolithic FastAPI backend • PostgreSQL + pgvector semantic search
           </p>
         </div>
 
         {/* System Architecture Diagram */}
         <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-2xl p-8 mb-6 border-2 border-orange-500">
-          <h3 className="text-2xl font-bold text-white mb-6">
+          <h3 className="text-3xl font-bold text-white mb-6">
             System Architecture Diagram
           </h3>
 
@@ -37,45 +36,45 @@ export function OverallSystemFlow() {
             {/* Client Layer */}
             <div className="border-2 border-orange-500 rounded-lg p-5 bg-gradient-to-br from-gray-800 to-gray-900">
               <div className="text-center mb-4">
-                <div className="text-xl font-bold text-white">
+                <div className="text-2xl font-bold text-white">
                   Client Layer
                 </div>
-                <div className="text-sm text-orange-400">
+                <div className="text-base text-orange-400">
                   Three Access Modes
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-4">
                 <div className="bg-black rounded-lg p-4 border-2 border-orange-500 shadow-lg">
-                  <div className="font-bold text-white mb-2">
+                  <div className="font-bold text-lg text-white mb-2">
                     Anonymous Mode
                   </div>
-                  <div className="text-sm text-gray-300">
+                  <div className="text-base text-gray-300">
                     iPad Kiosk
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">
-                    No login • Age only
+                  <div className="text-sm text-gray-400 mt-1">
+                    No login • User provides age
                   </div>
                 </div>
                 <div className="bg-black rounded-lg p-4 border-2 border-orange-500 shadow-lg">
-                  <div className="font-bold text-white mb-2">
+                  <div className="font-bold text-lg text-white mb-2">
                     Library Card
                   </div>
-                  <div className="text-sm text-gray-300">
+                  <div className="text-base text-gray-300">
                     Patron Login
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">
-                    Personalized recs
+                  <div className="text-sm text-gray-400 mt-1">
+                    Borrow history • No PII stored
                   </div>
                 </div>
                 <div className="bg-black rounded-lg p-4 border-2 border-orange-500 shadow-lg">
-                  <div className="font-bold text-white mb-2">
+                  <div className="font-bold text-lg text-white mb-2">
                     Admin Mode
                   </div>
-                  <div className="text-sm text-gray-300">
+                  <div className="text-base text-gray-300">
                     Librarian Dashboard
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">
-                    Manage catalog
+                  <div className="text-sm text-gray-400 mt-1">
+                    Fully implemented (852 lines)
                   </div>
                 </div>
               </div>
@@ -89,56 +88,56 @@ export function OverallSystemFlow() {
             {/* Frontend Layer */}
             <div className="border-2 border-orange-500 rounded-lg p-5 bg-gradient-to-br from-gray-800 to-gray-900">
               <div className="text-center mb-4">
-                <div className="text-xl font-bold text-white">
+                <div className="text-2xl font-bold text-white">
                   Frontend Layer
                 </div>
-                <div className="text-sm text-orange-400">
+                <div className="text-base text-orange-400">
                   React 18.3 + TypeScript + Material-UI
                 </div>
               </div>
               <div className="grid grid-cols-4 gap-3 mb-3">
                 <div className="bg-black rounded p-3 border border-orange-500">
-                  <div className="font-bold text-sm text-white">
+                  <div className="font-bold text-base text-white">
                     BookCard
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     Cover + metadata
                   </div>
                 </div>
                 <div className="bg-black rounded p-3 border border-orange-500">
-                  <div className="font-bold text-sm text-white">
+                  <div className="font-bold text-base text-white">
                     ChatInterface
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     Conversational UI
                   </div>
                 </div>
                 <div className="bg-black rounded p-3 border border-orange-500">
-                  <div className="font-bold text-sm text-white">
+                  <div className="font-bold text-base text-white">
                     FilterPanel
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     Age/genre filters
                   </div>
                 </div>
                 <div className="bg-black rounded p-3 border border-orange-500">
-                  <div className="font-bold text-sm text-white">
+                  <div className="font-bold text-base text-white">
                     AdminDashboard
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     Book management
                   </div>
                 </div>
               </div>
-              <div className="text-center text-sm text-gray-300 font-semibold mb-2">
+              <div className="text-center text-base text-gray-300 font-semibold mb-2">
                 AuthContext • AccessibilityContext • API Service
                 Layer
               </div>
               <div className="bg-orange-900/30 border border-orange-500 rounded p-2 text-center">
-                <div className="text-xs font-semibold text-orange-400 mb-1">
+                <div className="text-sm font-semibold text-orange-400 mb-1">
                   Custom Hooks:
                 </div>
-                <div className="text-xs text-gray-300">
+                <div className="text-sm text-gray-300">
                   useBooks • useRecommendations • useAdmin •
                   useBorrow • useFeedback • useUsers
                 </div>
@@ -153,59 +152,59 @@ export function OverallSystemFlow() {
             {/* API Gateway Layer */}
             <div className="border-2 border-orange-500 rounded-lg p-5 bg-gradient-to-br from-gray-800 to-gray-900">
               <div className="text-center mb-4">
-                <div className="text-xl font-bold text-white">
+                <div className="text-2xl font-bold text-white">
                   API Gateway Layer
                 </div>
-                <div className="text-sm text-orange-400">
+                <div className="text-base text-orange-400">
                   FastAPI + Uvicorn + JWT Middleware
                 </div>
               </div>
               <div className="grid grid-cols-6 gap-2">
                 <div className="bg-black rounded p-3 border border-orange-500 text-center">
-                  <div className="font-bold text-xs text-white">
+                  <div className="font-bold text-sm text-white">
                     /auth
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     Login/refresh
                   </div>
                 </div>
                 <div className="bg-black rounded p-3 border border-orange-500 text-center">
-                  <div className="font-bold text-xs text-white">
+                  <div className="font-bold text-sm text-white">
                     /books
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     CRUD ops
                   </div>
                 </div>
                 <div className="bg-black rounded p-3 border border-orange-500 text-center">
-                  <div className="font-bold text-xs text-white">
+                  <div className="font-bold text-sm text-white">
                     /recommendations
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     Chat/filter
                   </div>
                 </div>
                 <div className="bg-black rounded p-3 border border-orange-500 text-center">
-                  <div className="font-bold text-xs text-white">
+                  <div className="font-bold text-sm text-white">
                     /borrow
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     Checkout/return
                   </div>
                 </div>
                 <div className="bg-black rounded p-3 border border-orange-500 text-center">
-                  <div className="font-bold text-xs text-white">
+                  <div className="font-bold text-sm text-white">
                     /admin
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     Manage
                   </div>
                 </div>
                 <div className="bg-black rounded p-3 border border-orange-500 text-center">
-                  <div className="font-bold text-xs text-white">
+                  <div className="font-bold text-sm text-white">
                     /feedback
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     Ratings
                   </div>
                 </div>
@@ -220,105 +219,105 @@ export function OverallSystemFlow() {
             {/* Service Layer */}
             <div className="border-2 border-gray-600 rounded-lg p-5 bg-gradient-to-br from-gray-800 to-black">
               <div className="text-center mb-4">
-                <div className="text-xl font-bold text-white">
+                <div className="text-2xl font-bold text-white">
                   Service Layer
                 </div>
-                <div className="text-sm text-gray-400">
+                <div className="text-base text-gray-400">
                   Python Business Logic Services
                 </div>
               </div>
               <div className="grid grid-cols-4 gap-3 mb-3">
                 <div className="bg-gray-900 rounded p-3 border-2 border-gray-600">
-                  <div className="font-bold text-sm text-white mb-1">
+                  <div className="font-bold text-base text-white mb-1">
                     AuthService
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • JWT tokens
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • bcrypt hash
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • Role checks
                   </div>
                 </div>
                 <div className="bg-gray-900 rounded p-3 border-2 border-gray-600">
-                  <div className="font-bold text-sm text-white mb-1">
+                  <div className="font-bold text-base text-white mb-1">
                     AgentService
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • Parse queries
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • DeepSeek LLM
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • Filter extraction
                   </div>
                 </div>
                 <div className="bg-gray-900 rounded p-3 border-2 border-gray-600">
-                  <div className="font-bold text-sm text-white mb-1">
+                  <div className="font-bold text-base text-white mb-1">
                     VectorService
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • OpenAI embed
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • pgvector search
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • Cosine similarity
                   </div>
                 </div>
                 <div className="bg-gray-900 rounded p-3 border-2 border-gray-600">
-                  <div className="font-bold text-sm text-white mb-1">
+                  <div className="font-bold text-base text-white mb-1">
                     BookService
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • CRUD ops
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • OpenLibrary sync
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • Metadata mgmt
                   </div>
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-3">
                 <div className="bg-gray-900 rounded p-3 border-2 border-gray-600">
-                  <div className="font-bold text-sm text-white mb-1">
+                  <div className="font-bold text-base text-white mb-1">
                     ChatContextManager
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • Conversation history
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • Deduplication
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • 30-day TTL
                   </div>
                 </div>
                 <div className="bg-gray-900 rounded p-3 border-2 border-gray-600">
-                  <div className="font-bold text-sm text-white mb-1">
+                  <div className="font-bold text-base text-white mb-1">
                     FeedbackService
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • Analytics aggregation
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • Ratings management
                   </div>
                 </div>
                 <div className="bg-gray-900 rounded p-3 border-2 border-gray-600">
-                  <div className="font-bold text-sm text-white mb-1">
+                  <div className="font-bold text-base text-white mb-1">
                     BorrowingService
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • Checkout/return logic
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-sm text-gray-400">
                     • Overdue tracking
                   </div>
                 </div>
@@ -334,46 +333,46 @@ export function OverallSystemFlow() {
                 </div>
                 <div className="border-2 border-orange-500 rounded-lg p-4 bg-gradient-to-br from-gray-800 to-gray-900">
                   <div className="text-center mb-3">
-                    <div className="text-lg font-bold text-white">
+                    <div className="text-xl font-bold text-white">
                       External APIs
                     </div>
                   </div>
                   <div className="space-y-2">
                     <div className="bg-black rounded p-3 border border-orange-500">
-                      <div className="font-bold text-sm text-white">
+                      <div className="font-bold text-base text-white">
                         DeepSeek API
                       </div>
-                      <div className="text-xs text-gray-300">
+                      <div className="text-sm text-gray-300">
                         Query parsing (2-3s)
                       </div>
-                      <div className="text-xs text-gray-400">
+                      <div className="text-sm text-gray-400">
                         Confidence threshold 0.7-1.0
                       </div>
                     </div>
                     <div className="bg-black rounded p-3 border border-orange-500">
-                      <div className="font-bold text-sm text-white">
+                      <div className="font-bold text-base text-white">
                         OpenAI API
                       </div>
-                      <div className="text-xs text-gray-300">
+                      <div className="text-sm text-gray-300">
                         Embeddings + GPT-4o-mini (1-2s)
                       </div>
-                      <div className="text-xs text-gray-400">
+                      <div className="text-sm text-gray-400">
                         Embedding: 200-400ms • Explanation: 1-2s
                       </div>
                     </div>
                     <div className="bg-black rounded p-3 border border-orange-500">
-                      <div className="font-bold text-sm text-white">
+                      <div className="font-bold text-base text-white">
                         OpenLibrary API
                       </div>
-                      <div className="text-xs text-gray-300">
+                      <div className="text-sm text-gray-300">
                         Book metadata sync
                       </div>
                     </div>
                     <div className="bg-black rounded p-3 border border-orange-500">
-                      <div className="font-bold text-sm text-white">
+                      <div className="font-bold text-base text-white">
                         Guardrails AI
                       </div>
-                      <div className="text-xs text-gray-300">
+                      <div className="text-sm text-gray-300">
                         LLM validation • XSS prevention
                       </div>
                     </div>
@@ -388,51 +387,51 @@ export function OverallSystemFlow() {
                 </div>
                 <div className="border-2 border-gray-600 rounded-lg p-4 bg-gradient-to-br from-gray-800 to-black">
                   <div className="text-center mb-3">
-                    <div className="text-lg font-bold text-white">
+                    <div className="text-xl font-bold text-white">
                       Database Layer
                     </div>
-                    <div className="text-xs text-gray-400">
+                    <div className="text-sm text-gray-400">
                       Supabase PostgreSQL + pgvector
                     </div>
                   </div>
                   <div className="space-y-2">
                     <div className="bg-gray-900 rounded p-3 border border-gray-600">
-                      <div className="font-bold text-sm text-white">
+                      <div className="font-bold text-base text-white">
                         Core Tables
                       </div>
-                      <div className="text-xs text-gray-400">
+                      <div className="text-sm text-gray-400">
                         users • books • conversations
                       </div>
                     </div>
                     <div className="bg-gray-900 rounded p-3 border border-gray-600">
-                      <div className="font-bold text-sm text-white">
+                      <div className="font-bold text-base text-white">
                         Engagement
                       </div>
-                      <div className="text-xs text-gray-400">
+                      <div className="text-sm text-gray-400">
                         ratings • reviews • events
                       </div>
                     </div>
                     <div className="bg-gray-900 rounded p-3 border border-gray-600">
-                      <div className="font-bold text-sm text-white">
+                      <div className="font-bold text-base text-white">
                         Circulation
                       </div>
-                      <div className="text-xs text-gray-400">
+                      <div className="text-sm text-gray-400">
                         borrows • holds
                       </div>
                     </div>
                     <div className="bg-gray-900 rounded p-3 border border-gray-600">
-                      <div className="font-bold text-sm text-white">
+                      <div className="font-bold text-base text-white">
                         Vector Storage
                       </div>
-                      <div className="text-xs text-gray-400">
+                      <div className="text-sm text-gray-400">
                         1536-dim embeddings (IVFFLAT)
                       </div>
                     </div>
                     <div className="bg-gray-900 rounded p-3 border border-gray-600">
-                      <div className="font-bold text-sm text-white">
+                      <div className="font-bold text-base text-white">
                         Security
                       </div>
-                      <div className="text-xs text-gray-400">
+                      <div className="text-sm text-gray-400">
                         Row Level Security + RLS policies
                       </div>
                     </div>
@@ -448,63 +447,71 @@ export function OverallSystemFlow() {
 
             <div className="border-2 border-gray-600 rounded-lg p-5 bg-gradient-to-br from-gray-800 to-black">
               <div className="text-center mb-4">
-                <div className="text-xl font-bold text-white">
+                <div className="text-2xl font-bold text-white">
                   Background Jobs Layer
                 </div>
-                <div className="text-sm text-gray-400">
-                  Automated Cron + Manual Admin Triggers
+                <div className="text-base text-orange-400">
+                  APScheduler fully implemented with 4 scheduled jobs
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4 mb-3">
                 <div>
-                  <div className="text-xs font-semibold text-white mb-2">
-                    Automated (Cron)
+                  <div className="text-sm font-semibold text-white mb-2">
+                    Automated Jobs (Running)
                   </div>
                   <div className="space-y-2">
-                    <div className="bg-gray-900 rounded p-3 border border-gray-600">
-                      <div className="font-bold text-sm text-white">
+                    <div className="bg-gray-900 rounded p-3 border border-orange-500">
+                      <div className="font-bold text-base text-white">
                         Embeddings Processing
                       </div>
-                      <div className="text-xs text-gray-400">
-                        Nightly at 2:00 AM
+                      <div className="text-sm text-gray-300">
+                        Daily at 2:00 AM
                       </div>
                     </div>
-                    <div className="bg-gray-900 rounded p-3 border border-gray-600">
-                      <div className="font-bold text-sm text-white">
-                        Analytics Updates
+                    <div className="bg-gray-900 rounded p-3 border border-orange-500">
+                      <div className="font-bold text-base text-white">
+                        Recommendations Update
                       </div>
-                      <div className="text-xs text-gray-400">
+                      <div className="text-sm text-gray-300">
                         Daily at 3:00 AM
                       </div>
                     </div>
-                    <div className="bg-gray-900 rounded p-3 border border-gray-600">
-                      <div className="font-bold text-sm text-white">
-                        Conversation Cleanup
+                    <div className="bg-gray-900 rounded p-3 border border-orange-500">
+                      <div className="font-bold text-base text-white">
+                        Token Cleanup
                       </div>
-                      <div className="text-xs text-gray-400">
-                        Daily maintenance
+                      <div className="text-sm text-gray-300">
+                        Daily at 4:00 AM
                       </div>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-white mb-2">
-                    Manual Triggers (Admin)
+                  <div className="text-sm font-semibold text-white mb-2">
+                    Analytics & Manual Triggers
                   </div>
                   <div className="space-y-2">
-                    <div className="bg-gray-900 rounded p-3 border border-gray-600">
-                      <div className="font-bold text-sm text-white">
-                        POST /admin/jobs/process-embeddings
+                    <div className="bg-gray-900 rounded p-3 border border-orange-500">
+                      <div className="font-bold text-base text-white">
+                        Analytics Summary
                       </div>
-                      <div className="text-xs text-gray-400">
-                        Trigger embeddings on-demand
+                      <div className="text-sm text-gray-300">
+                        Weekly (Sunday 5:00 AM)
                       </div>
                     </div>
-                    <div className="bg-gray-900 rounded p-3 border border-gray-600">
-                      <div className="font-bold text-sm text-white">
+                    <div className="bg-gray-900 rounded p-3 border border-orange-500">
+                      <div className="font-bold text-base text-white">
+                        POST /admin/jobs/process-embeddings
+                      </div>
+                      <div className="text-sm text-gray-300">
+                        Manual trigger available
+                      </div>
+                    </div>
+                    <div className="bg-gray-900 rounded p-3 border border-orange-500">
+                      <div className="font-bold text-base text-white">
                         GET /api/v1/jobs/status
                       </div>
-                      <div className="text-xs text-gray-400">
+                      <div className="text-sm text-gray-300">
                         Monitor execution history
                       </div>
                     </div>
@@ -512,26 +519,24 @@ export function OverallSystemFlow() {
                 </div>
               </div>
               <div className="bg-orange-900/30 border border-orange-500 rounded p-2 text-center">
-                <div className="text-xs text-orange-400">
-                  Rate limit: 1 per 5 minutes for admin job
-                  triggers
+                <div className="text-sm text-orange-400">
+                  ✅ APScheduler v3.10.4+ integrated and auto-starting via lifespan events
                 </div>
               </div>
             </div>
 
             {/* Key Architecture Notes */}
             <div className="mt-6 bg-gradient-to-br from-orange-900/40 to-orange-950/40 rounded-lg p-5 border-2 border-orange-500">
-              <div className="text-sm font-bold text-orange-400 mb-3">
+              <div className="text-base font-bold text-orange-400 mb-3">
                 🏗️ Architecture Highlights:
               </div>
-              <div className="grid grid-cols-3 gap-4 text-sm text-gray-300 mb-3">
+              <div className="grid grid-cols-3 gap-4 text-base text-gray-300 mb-3">
                 <div>
                   <strong className="text-white">
                     REST API:
                   </strong>{" "}
                   Stateless request handling via JWT.
-                  Conversation state persisted in database for
-                  multi-turn chat.
+                  Conversation history accepted in requests for LLM context; not persisted between sessions.
                 </div>
                 <div>
                   <strong className="text-white">
@@ -549,16 +554,14 @@ export function OverallSystemFlow() {
                 </div>
               </div>
               <div className="bg-black/50 rounded p-3 border-l-4 border-orange-500 mb-2">
-                <div className="text-xs font-semibold text-orange-400 mb-1">
+                <div className="text-sm font-semibold text-orange-400 mb-1">
                   Security Layer:
                 </div>
-                <div className="text-xs text-gray-300">
+                <div className="text-sm text-gray-300">
                   JWT Authentication (HS256) • Row Level
                   Security (RLS) • RBAC (patron vs librarian) •
-                  COPPA age verification • Rate limiting
-                  (100/min authenticated, 50/min anonymous,
-                  20/min auth endpoints) • Input sanitization
-                  (Guardrails AI)
+                  COPPA age verification • Rate limiting configured (enforcement planned) •
+                  Input sanitization (Guardrails AI)
                 </div>
               </div>
             </div>
@@ -583,14 +586,13 @@ export function OverallSystemFlow() {
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                       <span className="text-gray-300">
-                        ✅ Implemented & Tested (~60% complete)
+                        ✅ Implemented & Tested (~50% complete)
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 bg-amber-500 rounded-full"></div>
                       <span className="text-gray-300">
-                        🔄 Planned (P1 Priority - conversation
-                        layer)
+                        🔄 Planned P1 Priority (conversation layer)
                       </span>
                     </div>
                   </div>
@@ -635,7 +637,7 @@ export function OverallSystemFlow() {
                       • pgvector cosine similarity
                     </div>
                     <div className="text-xs text-amber-600 mt-1">
-                      ⚠️ Deduplication: Planned P1
+                      🔄 Deduplication: Planned P1
                     </div>
                   </div>
 
@@ -654,27 +656,27 @@ export function OverallSystemFlow() {
                     </div>
                   </div>
 
-                  <div className="bg-[rgb(0,0,0)] rounded p-3 border border-amber-400">
+                  <div className="bg-white rounded p-3 border border-amber-300">
                     <div className="flex items-center gap-2 mb-1">
                       <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
                       <div className="font-bold text-gray-900">
                         ChatContextManager
                       </div>
-                      <span className="text-xs bg-amber-500/30 text-amber-300 px-2 py-0.5 rounded border border-amber-500">
-                        Planned
+                      <span className="text-xs bg-amber-500/30 text-amber-800 px-2 py-0.5 rounded border border-amber-500">
+                        Planned P1
                       </span>
                     </div>
-                    <div className="text-gray-300">
+                    <div className="text-gray-600">
                       • DB conversation persistence
                     </div>
-                    <div className="text-gray-300">
+                    <div className="text-gray-600">
                       • Filter merging across turns
                     </div>
-                    <div className="text-gray-300">
+                    <div className="text-gray-600">
                       • Book deduplication tracking
                     </div>
-                    <div className="text-xs text-amber-400 mt-1 font-semibold">
-                      Ad-hoc in endpoint, not formal service
+                    <div className="text-xs text-amber-600 mt-1 font-semibold">
+                      Current: In-request context via endpoint
                     </div>
                   </div>
                 </div>
