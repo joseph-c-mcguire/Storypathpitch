@@ -284,21 +284,7 @@ export function OverallSystemFlow() {
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-3 gap-3">
-                <div className="bg-gray-900 rounded p-3 border-2 border-gray-600">
-                  <div className="font-bold text-base text-white mb-1">
-                    ChatContextManager
-                  </div>
-                  <div className="text-sm text-gray-400">
-                    • Conversation history
-                  </div>
-                  <div className="text-sm text-gray-400">
-                    • Deduplication
-                  </div>
-                  <div className="text-sm text-gray-400">
-                    • 30-day TTL
-                  </div>
-                </div>
+              <div className="grid grid-cols-2 gap-3">
                 <div className="bg-gray-900 rounded p-3 border-2 border-gray-600">
                   <div className="font-bold text-base text-white mb-1">
                     FeedbackService
@@ -445,13 +431,13 @@ export function OverallSystemFlow() {
               <ArrowRight className="w-6 h-6 text-orange-500 rotate-90" />
             </div>
 
-            <div className="border-2 border-gray-600 rounded-lg p-5 bg-gradient-to-br from-gray-800 to-black">
+            <div className="border-2 border-orange-500 rounded-lg p-5 bg-gradient-to-br from-gray-800 to-black">
               <div className="text-center mb-4">
                 <div className="text-2xl font-bold text-white">
                   Background Jobs Layer
                 </div>
                 <div className="text-base text-orange-400">
-                  APScheduler fully implemented with 4 scheduled jobs
+                  ✅ APScheduler fully operational with 4 nightly jobs
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4 mb-3">
@@ -520,7 +506,7 @@ export function OverallSystemFlow() {
               </div>
               <div className="bg-orange-900/30 border border-orange-500 rounded p-2 text-center">
                 <div className="text-sm text-orange-400">
-                  ✅ APScheduler v3.10.4+ integrated and auto-starting via lifespan events
+                  ✅ Auto-starting via lifespan events in main.py
                 </div>
               </div>
             </div>

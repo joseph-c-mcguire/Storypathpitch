@@ -264,13 +264,13 @@ export function ArchitecturalDecisions() {
                         </span>
                       </div>
                       <div className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold">
+                        <span className="inline-block w-1.5 h-1.5 bg-green-600 rounded-full mr-2">
                           •
                         </span>
                         <span>
-                          Monthly AI cost: ~$31 for 30k queries
-                          (embeddings $30, DeepSeek $0.84,
-                          summaries $0.45)
+                          Monthly AI cost: ~$100-120 for 30k queries
+                          (OpenAI embeddings $90, DeepSeek $8,
+                          GPT-4o-mini $18)
                         </span>
                       </div>
                     </div>

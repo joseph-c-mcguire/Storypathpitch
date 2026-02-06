@@ -542,7 +542,7 @@ export function UserWorkflowExample() {
                   <div className="text-sm font-semibold text-gray-700 mb-1">Services Used:</div>
                   <div className="text-sm text-gray-600">✅ AgentService (decide)</div>
                   <div className="text-sm text-gray-600">✅ DeepSeek API</div>
-                  <div className="text-sm text-amber-600">ChatContextManager (not yet implemented)</div>
+                  <div className="text-sm text-gray-400">Note: Conversation history passed in-request (not persisted)</div>
                   <div className="flex gap-2 mt-1">
                     <button 
                       onClick={() => openCodeViewer('agent-decide')}
@@ -611,7 +611,7 @@ export function UserWorkflowExample() {
                   <div className="text-sm font-semibold text-gray-700 mb-1">Current Behavior:</div>
                   <div className="text-sm text-gray-600">• Generate 1536-dim embedding</div>
                   <div className="text-sm text-gray-600">• Supabase RPC search</div>
-                  <div className="text-sm text-gray-600">• Return: top 5 books</div>
+                  <div className="text-sm text-gray-600">• Return: top 10 books (configurable)</div>
                   <div className="text-sm text-amber-600 mt-1">Book deduplication (planned)</div>
                 </div>
                 <div>
@@ -722,7 +722,6 @@ export function UserWorkflowExample() {
                 <div>✅ <strong>Step 3:</strong> OpenAI embed ~150-300ms, pgvector 10-50ms</div>
                 <div>✅ <strong>Step 4:</strong> GPT-4o-mini ~0.5-1.5s</div>
                 <div><strong>Total:</strong> ~2.5-4.5s (typical with caching)</div>
-                <div className="text-amber-600"><strong>Optimization (planned P2):</strong> Parallel steps 2 & 4 → ~2-3s</div>
               </div>
             </div>
           </div>
@@ -733,24 +732,6 @@ export function UserWorkflowExample() {
               <Code2 className="w-4 h-4 text-blue-600" />
               <span>Click any blue code reference to view full implementation with highlighted key sections</span>
             </div>
-          </div>
-        </div>
-
-        {/* Next Up Card */}
-        <div className="mt-8 bg-gradient-to-br from-orange-600 to-orange-800 rounded-xl p-6 border-2 border-orange-500">
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="text-orange-200 font-semibold uppercase text-xs tracking-wider mb-2">
-                Next Up
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-1">
-                Architectural Decisions & Tradeoffs
-              </h3>
-              <p className="text-orange-100 text-sm">
-                Key technical choices, scaling considerations, and implementation justifications
-              </p>
-            </div>
-            <ArrowRight className="w-8 h-8 text-white flex-shrink-0 ml-4" />
           </div>
         </div>
       </div>

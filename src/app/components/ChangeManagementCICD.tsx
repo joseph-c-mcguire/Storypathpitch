@@ -223,11 +223,6 @@ export function ChangeManagementCICD() {
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div className="bg-red-50 rounded-lg p-4 border-2 border-red-300 relative">
-                    <div className="absolute top-3 right-3">
-                      <span className="bg-gray-600 text-white text-xs font-bold px-2 py-1 rounded">
-                        🔄 PLANNED
-                      </span>
-                    </div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="font-semibold text-gray-900">
                         Security Scanning
@@ -243,13 +238,13 @@ export function ChangeManagementCICD() {
                       <strong>Planned:</strong> Trivy,
                       pip-audit, npm audit (1 week to implement)
                     </div>
-                  </div>
-                  <div className="bg-blue-50 rounded-lg p-4 border-2 border-blue-300 relative">
-                    <div className="absolute top-3 right-3">
-                      <span className="bg-yellow-600 text-white text-xs font-bold px-2 py-1 rounded">
-                        ⚠️ PARTIAL
+                    <div className="absolute bottom-3 right-3">
+                      <span className="bg-gray-600 text-white text-xs font-bold px-2 py-1 rounded">
+                        🔄 PLANNED
                       </span>
                     </div>
+                  </div>
+                  <div className="bg-blue-50 rounded-lg p-4 border-2 border-blue-300 relative">
                     <div className="flex items-center justify-between mb-2">
                       <span className="font-semibold text-gray-900">
                         Type Safety
@@ -265,15 +260,15 @@ export function ChangeManagementCICD() {
                       <strong>Status:</strong> Backend mypy
                       enforcement planned
                     </div>
+                    <div className="absolute bottom-3 right-3">
+                      <span className="bg-yellow-600 text-white text-xs font-bold px-2 py-1 rounded">
+                        ⚠️ PARTIAL
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="bg-green-50 rounded-lg p-4 border-2 border-green-300 relative">
-                    <div className="absolute top-3 right-3">
-                      <span className="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">
-                        ✅ LIVE
-                      </span>
-                    </div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="font-semibold text-gray-900">
                         Docker Build
@@ -289,9 +284,14 @@ export function ChangeManagementCICD() {
                       <strong>Working:</strong> Backend +
                       frontend containerized & deployed
                     </div>
+                    <div className="absolute bottom-3 right-3">
+                      <span className="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">
+                        ✅ LIVE
+                      </span>
+                    </div>
                   </div>
                   <div className="bg-purple-50 rounded-lg p-4 border-2 border-purple-300 relative">
-                    <div className="absolute top-3 right-3">
+                    <div className="absolute bottom-3 right-3">
                       <span className="bg-gray-600 text-white text-xs font-bold px-2 py-1 rounded">
                         🔄 PLANNED
                       </span>
