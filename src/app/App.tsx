@@ -6,9 +6,10 @@ import { OverallSystemFlow } from '@/app/components/OverallSystemFlow';
 import { UserWorkflowExample } from '@/app/components/UserWorkflowExample';
 import { ArchitecturalDecisions } from '@/app/components/ArchitecturalDecisions';
 import { RecommendationEngineComponent } from '@/app/components/RecommendationEngineComponent';
-import { GovernanceIteration } from '@/app/components/GovernanceIteration';
 import { AuthenticationUserManagement } from '@/app/components/AuthenticationUserManagement';
 import { ChangeManagementCICD } from '@/app/components/ChangeManagementCICD';
+import { MonitoringObservability } from '@/app/components/MonitoringObservability';
+import { GovernanceIteration } from '@/app/components/GovernanceIteration';
 import { PhasedDelivery } from '@/app/components/PhasedDelivery';
 import { SuccessMetricsConclusion } from '@/app/components/SuccessMetricsConclusion';
 import { LiveDemoTransition } from '@/app/components/LiveDemoTransition';
@@ -24,9 +25,10 @@ export default function App() {
     'user-workflow',
     'architectural-decisions',
     'recommendation-engine',
-    'governance',
     'authentication',
     'production-readiness',
+    'monitoring',
+    'governance',
     'rollout',
     'conclusion',
     'live-demo'
@@ -146,16 +148,20 @@ export default function App() {
           <RecommendationEngineComponent />
         </section>
 
-        <section id="governance">
-          <GovernanceIteration />
-        </section>
-
         <section id="authentication">
           <AuthenticationUserManagement />
         </section>
 
         <section id="production-readiness">
           <ChangeManagementCICD />
+        </section>
+
+        <section id="monitoring">
+          <MonitoringObservability />
+        </section>
+
+        <section id="governance">
+          <GovernanceIteration />
         </section>
 
         <section id="rollout">

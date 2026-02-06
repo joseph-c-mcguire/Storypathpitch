@@ -4,7 +4,7 @@ export function ArchitectureDiagram() {
   return (
     <div className="py-20 px-6 max-w-6xl mx-auto">
       <div className="mb-12">
-        <span className="text-purple-600 font-semibold uppercase text-sm tracking-wider">
+        <span className="text-orange-600 font-semibold uppercase text-sm tracking-wider">
           Slide 4
         </span>
         <h2 className="text-5xl font-bold mt-2 mb-4">
@@ -13,7 +13,7 @@ export function ArchitectureDiagram() {
         <p className="text-xl text-gray-600">
           High-level components and data flow
         </p>
-        <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 rounded mt-4" />
+        <div className="w-20 h-1 bg-gradient-to-r from-orange-600 to-red-600 rounded mt-4" />
       </div>
 
       {/* ASCII-style diagram */}
@@ -22,13 +22,13 @@ export function ArchitectureDiagram() {
           
           {/* Frontend Layer */}
           <div>
-            <h3 className="text-2xl font-bold text-blue-600 mb-4">1. Frontend Layer</h3>
+            <h3 className="text-2xl font-bold text-orange-600 mb-4">1. Frontend Layer</h3>
             <div className="pl-6 space-y-3">
-              <div className="border-l-4 border-blue-500 pl-4">
+              <div className="border-l-4 border-orange-500 pl-4">
                 <p className="font-bold text-lg">iPad Web App (Student Kiosk)</p>
                 <p className="text-gray-700">React + TailwindCSS • Responsive design • Offline-capable with cached data</p>
               </div>
-              <div className="border-l-4 border-blue-500 pl-4">
+              <div className="border-l-4 border-orange-500 pl-4">
                 <p className="font-bold text-lg">Librarian Admin Portal (Web)</p>
                 <p className="text-gray-700">Dashboard for managing filters, tags, performance monitoring, and rule adjustments</p>
               </div>
@@ -37,9 +37,9 @@ export function ArchitectureDiagram() {
 
           {/* API Layer */}
           <div>
-            <h3 className="text-2xl font-bold text-purple-600 mb-4">2. API Layer</h3>
+            <h3 className="text-2xl font-bold text-amber-600 mb-4">2. API Layer</h3>
             <div className="pl-6 space-y-3">
-              <div className="border-l-4 border-purple-500 pl-4">
+              <div className="border-l-4 border-amber-500 pl-4">
                 <p className="font-bold text-lg">Recommendation API (REST API)</p>
                 <p className="text-gray-700">FastAPI endpoints • JWT authentication • Rate limiting • Request/response caching</p>
                 <ul className="mt-2 text-gray-600 space-y-1">

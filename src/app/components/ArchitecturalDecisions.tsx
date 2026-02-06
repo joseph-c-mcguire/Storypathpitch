@@ -41,23 +41,15 @@ export function ArchitecturalDecisions() {
                     <div className="space-y-2 text-sm text-gray-700">
                       <div className="flex items-start gap-2">
                         <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Simpler deployment:</strong> One Docker container, one codebase to manage</span>
+                        <span>Single Docker container, unified codebase and logs</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Faster development:</strong> No inter-service communication overhead</span>
+                        <span>$25-50/month vs $200+ for microservices</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Lower cost:</strong> $25-50/month (single server + Supabase) vs $200+ for microservices</span>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Easier debugging:</strong> Single process, unified logs</span>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Service layer pattern:</strong> Prepares for future microservice migration</span>
+                        <span>Service layer pattern enables future migration</span>
                       </div>
                     </div>
                   </div>
@@ -68,38 +60,16 @@ export function ArchitecturalDecisions() {
                   <div className="bg-gray-50 border-l-4 border-gray-400 rounded p-4">
                     <div className="font-bold text-gray-700 mb-2 flex items-center gap-2">
                       <span className="text-xl">⚖️</span>
-                      <span>Trade-offs Accepted:</span>
+                      <span>Trade-offs:</span>
                     </div>
                     <div className="space-y-2 text-sm text-gray-700">
                       <div className="flex items-start gap-2">
                         <span className="text-gray-500 font-bold">•</span>
-                        <span><strong>Scaling limit:</strong> Horizontal scaling harder (but not needed until 50k+ users)</span>
+                        <span>Harder horizontal scaling (not needed until 50k+ users)</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-gray-500 font-bold">•</span>
-                        <span><strong>Single point of failure:</strong> Entire app goes down if process crashes</span>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <span className="text-gray-500 font-bold">•</span>
-                        <span><strong>Technology coupling:</strong> Can't use different languages for different services</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-blue-50 border-l-4 border-blue-500 rounded p-4">
-                    <div className="font-bold text-blue-700 mb-2 flex items-center gap-2">
-                      <TrendingUp className="w-4 h-4" />
-                      <span>Migration Path:</span>
-                    </div>
-                    <div className="text-sm text-gray-700 space-y-1">
-                      <div><strong>Phase 1 (Now):</strong> Single monolith, 0-10k users</div>
-                      <div><strong>Phase 2 (50k users):</strong> Replicate container 3x + load balancer</div>
-                      <div><strong>Phase 3 (500k users):</strong> Split into microservices:
-                        <div className="ml-4 text-xs text-gray-600 mt-1">
-                          • API tier (public endpoints)<br/>
-                          • Jobs tier (background processing)<br/>
-                          • Vector search tier (dedicated service)
-                        </div>
+                        <span>Single point of failure until replication added</span>
                       </div>
                     </div>
                   </div>
@@ -128,23 +98,15 @@ export function ArchitecturalDecisions() {
                     <div className="space-y-2 text-sm text-gray-700">
                       <div className="flex items-start gap-2">
                         <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Zero additional service:</strong> Runs inside existing PostgreSQL database</span>
+                        <span>Zero additional cost or services (included with Supabase)</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Transactional consistency:</strong> Book metadata + vector in same transaction</span>
+                        <span>Transactional consistency with book metadata</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-green-600 font-bold">•</span>
-                        <span><strong>No extra cost:</strong> Included with Supabase PostgreSQL plan ($0 additional)</span>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold">•</span>
-                        <span><strong>SQL queries:</strong> Combine vector similarity with standard filters in one query</span>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Good enough performance:</strong> 50-200ms for 10k books with IVFFLAT index</span>
+                        <span>50-200ms search time sufficient for 10k books</span>
                       </div>
                     </div>
                   </div>
@@ -160,41 +122,15 @@ export function ArchitecturalDecisions() {
                     <div className="space-y-2 text-sm text-gray-700">
                       <div className="flex items-start gap-2">
                         <span className="text-gray-500 font-bold">•</span>
-                        <span><strong>Performance ceiling:</strong> Pinecone faster at 1M+ vectors (&lt;10ms vs 50-200ms)</span>
+                        <span>Slower at 1M+ vectors (&lt;10ms vs 50-200ms)</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-gray-500 font-bold">•</span>
-                        <span><strong>Scaling limitations:</strong> pgvector not optimized for massive-scale vector search</span>
+                        <span>Missing advanced filtering and hybrid search features</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-gray-500 font-bold">•</span>
-                        <span><strong>Feature set:</strong> Pinecone has advanced filtering, metadata search, sparse-dense hybrid</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-blue-50 border-l-4 border-blue-500 rounded p-4">
-                    <div className="font-bold text-blue-700 mb-2 flex items-center gap-2">
-                      <Zap className="w-4 h-4" />
-                      <span>Performance Benchmark:</span>
-                    </div>
-                    <div className="text-xs text-gray-700 space-y-1">
-                      <div className="grid grid-cols-2 gap-2">
-                        <div className="bg-white rounded p-2">
-                          <div className="font-semibold text-gray-800">pgvector (current)</div>
-                          <div className="text-gray-600">10k books: 50-200ms</div>
-                          <div className="text-gray-600">100k books: 200-500ms</div>
-                          <div className="text-gray-600">Cost: $0 (included)</div>
-                        </div>
-                        <div className="bg-white rounded p-2">
-                          <div className="font-semibold text-gray-800">Pinecone (alternative)</div>
-                          <div className="text-gray-600">10k books: &lt;10ms</div>
-                          <div className="text-gray-600">100k books: &lt;20ms</div>
-                          <div className="text-gray-600">Cost: $70-100/month</div>
-                        </div>
-                      </div>
-                      <div className="mt-2 pt-2 border-t border-blue-200 text-gray-600">
-                        <strong>Decision:</strong> pgvector sufficient for MVP. Switch to Pinecone if response time &gt;500ms or catalog &gt;100k books.
+                        <span>Migration path: Switch to Pinecone if &gt;500ms or &gt;100k books</span>
                       </div>
                     </div>
                   </div>
@@ -223,23 +159,19 @@ export function ArchitecturalDecisions() {
                     <div className="space-y-2 text-sm text-gray-700">
                       <div className="flex items-start gap-2">
                         <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Borrow history patterns:</strong> Cheap, fast, high-quality recommendations from real usage data</span>
+                        <span>Borrowing history patterns provide fast, high-quality recommendations</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-green-600 font-bold">•</span>
-                        <span><strong>LLM metadata enrichment:</strong> DeepSeek extracts age range, tags, content warnings (nightly batch)</span>
+                        <span>DeepSeek enrichment (99% cheaper than GPT-4) for metadata extraction</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Vector semantic search:</strong> OpenAI embeddings enable "books like this" discovery</span>
+                        <span>Vector search enables natural language queries and semantic discovery</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Natural language queries:</strong> Users can ask "funny adventure for 13-year-old"</span>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Cost efficiency:</strong> DeepSeek 99% cheaper than GPT-4 ($0.14 vs $15 per 1M tokens)</span>
+                        <span>Monthly AI cost: ~$5-15 for 30k queries</span>
                       </div>
                     </div>
                   </div>
@@ -247,47 +179,23 @@ export function ArchitecturalDecisions() {
 
                 {/* Trade-offs */}
                 <div className="space-y-3">
-                  <div className="bg-yellow-50 border-l-4 border-yellow-500 rounded p-4">
-                    <div className="font-bold text-yellow-700 mb-2 flex items-center gap-2">
-                      <DollarSign className="w-4 h-4" />
-                      <span>LLM Cost Analysis:</span>
-                    </div>
-                    <div className="text-sm text-gray-700 space-y-2">
-                      <div className="flex items-start gap-2">
-                        <span className="text-yellow-600 font-bold">•</span>
-                        <span><strong>DeepSeek query parsing:</strong> ~200 tokens/query × 1000 queries/day = $0.03/day</span>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <span className="text-yellow-600 font-bold">•</span>
-                        <span><strong>Nightly enrichment:</strong> ~500 tokens/book × 50 books/night = $0.01/night</span>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <span className="text-yellow-600 font-bold">•</span>
-                        <span><strong>OpenAI embeddings:</strong> $0.02 per 1k texts (amortized across queries)</span>
-                      </div>
-                      <div className="mt-2 pt-2 border-t border-yellow-300 font-semibold text-yellow-800">
-                        Total monthly AI cost: ~$5-15 for 30k queries
-                      </div>
-                    </div>
-                  </div>
-
                   <div className="bg-gray-50 border-l-4 border-gray-400 rounded p-4">
                     <div className="font-bold text-gray-700 mb-2 flex items-center gap-2">
                       <span className="text-xl">⚖️</span>
-                      <span>Trade-offs vs Pure Collaborative Filtering:</span>
+                      <span>Trade-offs:</span>
                     </div>
                     <div className="space-y-2 text-sm text-gray-700">
                       <div className="flex items-start gap-2">
                         <span className="text-gray-500 font-bold">•</span>
-                        <span><strong>Cold start problem:</strong> LLM helps new books without borrowing history</span>
+                        <span>2-3s LLM parsing latency vs instant collaborative filtering</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-gray-500 font-bold">•</span>
-                        <span><strong>Latency trade-off:</strong> 2-3s for LLM parsing vs instant collaborative filtering</span>
+                        <span>Dependency on external APIs (OpenAI/DeepSeek)</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-gray-500 font-bold">•</span>
-                        <span><strong>Dependency on external APIs:</strong> OpenAI/DeepSeek outages impact service</span>
+                        <span>Additional complexity vs pure collaborative filtering</span>
                       </div>
                     </div>
                   </div>
@@ -316,78 +224,43 @@ export function ArchitecturalDecisions() {
                     <div className="space-y-2 text-sm text-gray-700">
                       <div className="flex items-start gap-2">
                         <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Anonymous mode:</strong> No PII collected. Only age band (child/teen/adult) stored.</span>
+                        <span>Anonymous mode: no PII, only age band stored</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Library card ≠ Student ID:</strong> Distinct namespace prevents data linkage to school records</span>
+                        <span>Library card isolated from student IDs (FERPA compliance)</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-green-600 font-bold">•</span>
-                        <span><strong>JWT security:</strong> bcrypt password hashing + RS256 token signing</span>
+                        <span>Age-based filtering with content warnings (COPPA compliance)</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Age-based filtering:</strong> Content automatically filtered by age metadata</span>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Family-safe mode:</strong> Optional strict content filtering</span>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <span className="text-green-600 font-bold">•</span>
-                        <span><strong>Defense in depth:</strong> Guardrails validation → Regex fallback → Manual librarian review</span>
+                        <span>Full ADA accessibility: screen reader, keyboard nav, high contrast</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Implementation Details */}
+                {/* Trade-offs */}
                 <div className="space-y-3">
-                  <div className="bg-blue-50 border-l-4 border-blue-500 rounded p-4">
-                    <div className="font-bold text-blue-700 mb-2 flex items-center gap-2">
-                      <Shield className="w-4 h-4" />
-                      <span>Compliance Implementation:</span>
-                    </div>
-                    <div className="text-xs text-gray-700 space-y-2">
-                      <div>
-                        <div className="font-semibold text-gray-800 mb-1">FERPA (Student Privacy):</div>
-                        <div className="text-gray-600">• No student names, addresses, or SSN collected</div>
-                        <div className="text-gray-600">• Library card numbers isolated from educational records</div>
-                        <div className="text-gray-600">• Borrowing history only visible to user + librarian</div>
-                      </div>
-                      <div>
-                        <div className="font-semibold text-gray-800 mb-1">COPPA (Children Online):</div>
-                        <div className="text-gray-600">• No email/phone collection for users &lt;13</div>
-                        <div className="text-gray-600">• Parental consent workflow for accounts &lt;13</div>
-                        <div className="text-gray-600">• Age verification at login</div>
-                      </div>
-                      <div>
-                        <div className="font-semibold text-gray-800 mb-1">ADA Accessibility:</div>
-                        <div className="text-gray-600">• Full screen reader support (ARIA labels)</div>
-                        <div className="text-gray-600">• Keyboard navigation</div>
-                        <div className="text-gray-600">• High contrast mode + font scaling</div>
-                      </div>
-                    </div>
-                  </div>
-
                   <div className="bg-gray-50 border-l-4 border-gray-400 rounded p-4">
                     <div className="font-bold text-gray-700 mb-2 flex items-center gap-2">
                       <span className="text-xl">⚖️</span>
                       <span>Trade-offs:</span>
                     </div>
-                    <div className="space-y-1 text-sm text-gray-700">
+                    <div className="space-y-2 text-sm text-gray-700">
                       <div className="flex items-start gap-2">
                         <span className="text-gray-500 font-bold">•</span>
-                        <span><strong>Less personalization:</strong> Anonymous mode can't track long-term reading history</span>
+                        <span>Anonymous mode can't track long-term reading history</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-gray-500 font-bold">•</span>
-                        <span><strong>More complex auth:</strong> 3 login modes to maintain</span>
+                        <span>Three login modes increase auth complexity</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <span className="text-gray-500 font-bold">•</span>
-                        <span><strong>Development overhead:</strong> Content filtering + guardrails validation adds complexity</span>
+                        <span>Content filtering and guardrails validation add dev overhead</span>
                       </div>
                     </div>
                   </div>

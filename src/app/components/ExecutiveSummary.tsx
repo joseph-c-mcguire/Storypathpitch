@@ -4,13 +4,13 @@ export function ExecutiveSummary() {
   return (
     <div className="py-20 px-6 max-w-6xl mx-auto">
       <div className="mb-12">
-        <span className="text-blue-600 font-semibold uppercase text-sm tracking-wider">
+        <span className="text-orange-600 font-semibold uppercase text-sm tracking-wider">
           Executive Summary
         </span>
         <h2 className="text-4xl font-bold mt-2 mb-4">
           Increasing Student Reading Through AI
         </h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded" />
+        <div className="w-20 h-1 bg-gradient-to-r from-orange-600 to-red-600 rounded" />
       </div>
 
       <div className="prose prose-lg max-w-none mb-12">
@@ -34,7 +34,7 @@ export function ExecutiveSummary() {
             rel="noopener noreferrer"
             className="bg-white bg-opacity-10 hover:bg-opacity-20 transition-all rounded-lg p-4 flex items-center gap-3 group"
           >
-            <Github className="w-5 h-5 text-blue-400 flex-shrink-0" />
+            <Github className="w-5 h-5 text-orange-400 flex-shrink-0" />
             <div>
               <div className="text-white font-semibold group-hover:underline">StoryPath Application</div>
               <div className="text-gray-300 text-sm">github.com/joseph-c-mcguire/story-path</div>
@@ -46,7 +46,7 @@ export function ExecutiveSummary() {
             rel="noopener noreferrer"
             className="bg-white bg-opacity-10 hover:bg-opacity-20 transition-all rounded-lg p-4 flex items-center gap-3 group"
           >
-            <Github className="w-5 h-5 text-purple-400 flex-shrink-0" />
+            <Github className="w-5 h-5 text-amber-400 flex-shrink-0" />
             <div>
               <div className="text-white font-semibold group-hover:underline">Presentation Code</div>
               <div className="text-gray-300 text-sm">github.com/joseph-c-mcguire/Storypathpitch</div>

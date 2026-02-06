@@ -15,10 +15,10 @@ export function RecommendationEngineComponent() {
         {/* Header */}
         <div className="mt-6 mb-8">
           <h2 className="text-5xl font-bold text-gray-900 mb-4">
-            Hybrid Recommender (Not Pure LLM)
+            Vector Search + LLM Query Parsing (MVP)
           </h2>
           <p className="text-xl text-gray-600">
-            Goal 2: Collaborative filtering + Popularity + Content + LLM explanations
+            Current: Content-based filtering • Planned: Hybrid scoring with collaborative filtering
           </p>
         </div>
 
@@ -32,7 +32,7 @@ export function RecommendationEngineComponent() {
                 : 'bg-white text-gray-700 hover:bg-purple-50'
             }`}
           >
-            Hybrid Architecture
+            Current Architecture
           </button>
           <button
             onClick={() => setActiveView('code')}
@@ -42,7 +42,7 @@ export function RecommendationEngineComponent() {
                 : 'bg-white text-gray-700 hover:bg-purple-50'
             }`}
           >
-            Implementation Code
+            Actual Implementation
           </button>
           <button
             onClick={() => setActiveView('justification')}
@@ -52,111 +52,123 @@ export function RecommendationEngineComponent() {
                 : 'bg-white text-gray-700 hover:bg-purple-50'
             }`}
           >
-            Tech Justifications
+            Future Roadmap
           </button>
         </div>
 
-        {/* Hybrid Architecture */}
+        {/* Current Architecture */}
         {activeView === 'hybrid' && (
           <div className="space-y-6">
-            {/* Formula */}
-            <div className="bg-slate-950 rounded-xl shadow-lg p-8 border-2 border-purple-500">
-              <div className="text-cyan-400 text-sm mb-2">backend/app/services/recommendations.py</div>
+            {/* Current Formula */}
+            <div className="bg-slate-950 rounded-xl shadow-lg p-8 border-2 border-green-500">
+              <div className="flex items-center justify-between mb-4">
+                <div className="text-green-400 text-sm">✓ Currently Implemented</div>
+                <div className="text-xs text-gray-400">backend/app/services/recommendations.py</div>
+              </div>
               <pre className="text-green-400 text-xl font-mono">
+{`# MVP Implementation
+recommendations = vector_search(query, age_filter, genre_filter)
+  ↓
+LLM query parsing (DeepSeek) → Vector similarity (OpenAI embeddings)
+  ↓
+Age-appropriate filtering → LLM explanations (GPT-4o-mini)`}
+              </pre>
+            </div>
+
+            {/* Planned Formula */}
+            <div className="bg-slate-950 rounded-xl shadow-lg p-8 border-2 border-amber-500">
+              <div className="flex items-center justify-between mb-4">
+                <div className="text-amber-400 text-sm">⚠ P1 Priority: Hybrid Scoring Enhancement</div>
+                <div className="text-xs text-gray-400">Hybrid scoring with collaborative filtering</div>
+              </div>
+              <pre className="text-amber-400 text-xl font-mono">
 {`final_score = 0.40 × vector_sim + 0.35 × collab + 0.15 × pop + 0.10 × recency
 
-LLM only used for: query parsing + explanations (not scoring)`}
+Implementation: 3-4 weeks • Requires borrowing history data`}
               </pre>
             </div>
 
             {/* Visual Breakdown */}
             <div className="grid grid-cols-4 gap-6">
               {/* Content Similarity (Vector) */}
-              <div className="bg-blue-50 rounded-xl p-6 border-2 border-blue-300">
-                <div className="text-4xl font-bold text-blue-700 mb-2">40%</div>
-                <div className="font-bold text-xl text-blue-900 mb-4">Content Similarity</div>
+              <div className="bg-blue-50 rounded-xl p-6 border-2 border-blue-500">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="text-4xl font-bold text-blue-700">100%</div>
+                  <div className="text-xs bg-green-500 text-white px-2 py-1 rounded font-semibold">✓ LIVE</div>
+                </div>
+                <div className="font-bold text-xl text-blue-900 mb-4">Vector Search</div>
                 <div className="bg-slate-900 rounded-lg p-4 font-mono text-xs text-gray-300 mb-4">
-{`# OpenAI text-embedding-3-small
-embed = openai.embeddings.create(
-  input=f"{title} {desc} {genres}",
-  model="text-embedding-3-small"
-)
-# pgvector cosine similarity
-SELECT * FROM books
-ORDER BY embedding <=> query_vec
-LIMIT 50`}
+{`# OpenAI embeddings
+books = vector_service.search(
+  query_text=query,
+  user_age=age,
+  age_range=(age-2, age+2),
+  genre=genre,
+  limit=10
+)`}
                 </div>
                 <div className="text-sm text-gray-700">
-                  <strong>Why:</strong> Handles vague queries ("scary middle school")
-                </div>
-                <div className="text-xs text-gray-600 mt-2">
-                  <strong>Works for:</strong> All users (no history needed)
+                  Handles natural language queries with semantic search
                 </div>
               </div>
 
               {/* Collaborative Filtering */}
-              <div className="bg-green-50 rounded-xl p-6 border-2 border-green-300">
-                <div className="text-4xl font-bold text-green-700 mb-2">35%</div>
-                <div className="font-bold text-xl text-green-900 mb-4">Collaborative Filtering</div>
-                <div className="bg-slate-900 rounded-lg p-4 font-mono text-xs text-gray-300 mb-4">
-{`# Jaccard similarity
-similar_users = find_users_with_overlap(
-  user_books, min_overlap=3
+              <div className="bg-gray-100 rounded-xl p-6 border-2 border-gray-400 opacity-60">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="text-4xl font-bold text-gray-600">0%</div>
+                  <div className="text-xs bg-amber-500 text-white px-2 py-1 rounded font-semibold">PLANNED</div>
+                </div>
+                <div className="font-bold text-xl text-gray-700 mb-4">Collaborative Filtering</div>
+                <div className="bg-slate-900 rounded-lg p-4 font-mono text-xs text-gray-400 mb-4">
+{`# Not implemented yet
+similar_users = find_overlap(
+  user_books, min=3
 )
-# Score = avg(similar_users' ratings)
-for book in candidates:
-  score = mean([
-    u.rating for u in similar_users
-    if u.borrowed(book)
-  ])`}
+score = avg_ratings(
+  similar_users, book
+)`}
                 </div>
-                <div className="text-sm text-gray-700">
-                  <strong>Why:</strong> Captures actual student preferences
-                </div>
-                <div className="text-xs text-gray-600 mt-2">
-                  <strong>Works for:</strong> Logged-in users with history
+                <div className="text-sm text-gray-600">
+                  Requires borrowing history data collection
                 </div>
               </div>
 
               {/* Popularity by Cohort */}
-              <div className="bg-orange-50 rounded-xl p-6 border-2 border-orange-300">
-                <div className="text-4xl font-bold text-orange-700 mb-2">15%</div>
-                <div className="font-bold text-xl text-orange-900 mb-4">Popularity by Cohort</div>
+              <div className="bg-orange-50 rounded-xl p-6 border-2 border-orange-400 opacity-70">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="text-4xl font-bold text-orange-600">20%</div>
+                  <div className="text-xs bg-blue-500 text-white px-2 py-1 rounded font-semibold">PARTIAL</div>
+                </div>
+                <div className="font-bold text-xl text-orange-800 mb-4">Age Filtering</div>
                 <div className="bg-slate-900 rounded-lg p-4 font-mono text-xs text-gray-300 mb-4">
-{`# Age-stratified popularity
-cohort = get_age_cohort(user_age)
-# cohort: 6-8, 9-11, 12-14, 15-18
-pop_score = (
-  book.borrow_count_in_cohort /
-  max_borrows_in_cohort
-)`}
+{`# Age range filtering
+.gte("age_max", user_age)
+.lte("age_min", user_age)
+
+# Cohort popularity: planned`}
                 </div>
                 <div className="text-sm text-gray-700">
-                  <strong>Why:</strong> Surface trending books + avoid adult content for kids
-                </div>
-                <div className="text-xs text-gray-600 mt-2">
-                  <strong>Works for:</strong> All users (baseline quality)
+                  Age filtering works; cohort-aware popularity not yet implemented
                 </div>
               </div>
 
               {/* Recency Boost */}
-              <div className="bg-purple-50 rounded-xl p-6 border-2 border-purple-300">
-                <div className="text-4xl font-bold text-purple-700 mb-2">10%</div>
-                <div className="font-bold text-xl text-purple-900 mb-4">Recency Boost</div>
-                <div className="bg-slate-900 rounded-lg p-4 font-mono text-xs text-gray-300 mb-4">
-{`# Exponential decay
-days_since_added = (
-  now - book.created_at
-).days
-recency_score = exp(
-  -days_since_added / 90
-)`}
+              <div className="bg-gray-100 rounded-xl p-6 border-2 border-gray-400 opacity-60">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="text-4xl font-bold text-gray-600">0%</div>
+                  <div className="text-xs bg-amber-500 text-white px-2 py-1 rounded font-semibold">PLANNED</div>
                 </div>
-                <div className="text-sm text-gray-700">
-                  <strong>Why:</strong> Surface new acquisitions
+                <div className="font-bold text-xl text-gray-700 mb-4">Recency Boost</div>
+                <div className="bg-slate-900 rounded-lg p-4 font-mono text-xs text-gray-400 mb-4">
+{`# Not implemented
+recency = exp(
+  -days_since / 90
+)
+
+# Future enhancement`}
                 </div>
-                <div className="text-xs text-gray-600 mt-2">
-                  <strong>Works for:</strong> Prevents stale catalog
+                <div className="text-sm text-gray-600">
+                  created_at field exists in schema
                 </div>
               </div>
             </div>
@@ -165,29 +177,34 @@ recency_score = exp(
             <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl shadow-lg p-8 text-gray-900">
               <div className="flex items-center gap-3 mb-4">
                 <Zap className="w-10 h-10" />
-                <div className="text-2xl font-bold">LLM Role: Query Parsing + Explanations (NOT Scoring)</div>
+                <div>
+                  <div className="text-2xl font-bold">LLM Role: Query Parsing + Explanations (NOT Scoring)</div>
+                  <div className="text-sm mt-1 bg-green-600 text-white px-3 py-1 rounded inline-block">✓ Currently Implemented</div>
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-6">
                 <div className="bg-white rounded-lg p-6">
-                  <div className="font-bold text-lg mb-3">Query Parsing (DeepSeek)</div>
+                  <div className="font-bold text-lg mb-3">Query Parsing (DeepSeek) ✓</div>
                   <div className="bg-slate-900 rounded-lg p-4 font-mono text-xs text-green-400">
 {`Input: "scary books for 10 year olds"
+DeepSeek → AgentService.decide()
 Output: {
-  "genre": ["horror"],
+  "genres": ["horror"],
   "age": 10,
-  "mood": ["suspenseful"]
+  "tags": ["suspenseful"]
 }
-# Used to filter vector search results`}
+# Filters vector search results`}
                   </div>
                 </div>
                 <div className="bg-white rounded-lg p-6">
-                  <div className="font-bold text-lg mb-3">Explanations (Post-Scoring)</div>
+                  <div className="font-bold text-lg mb-3">Explanations (GPT-4o-mini) ✓</div>
                   <div className="bg-slate-900 rounded-lg p-4 font-mono text-xs text-green-400">
-{`# After scoring, generate why
-"You might like this because:
-- Similar to Percy Jackson (vector: 0.87)
-- Popular with 5th graders (cohort rank: #3)
-- Recently added (2 weeks ago)"`}
+{`# Simple narrative summaries
+"Here are darker fantasy tales
+with morally complex characters
+that match your request..."
+
+# Not detailed score breakdowns`}
                   </div>
                 </div>
               </div>
@@ -195,217 +212,215 @@ Output: {
           </div>
         )}
 
-        {/* Code Implementation */}
+        {/* Actual Implementation */}
         {activeView === 'code' && (
           <div className="space-y-6">
-            <div className="bg-slate-950 rounded-xl shadow-lg p-8 border-2 border-purple-500">
+            <div className="bg-slate-950 rounded-xl shadow-lg p-8 border-2 border-green-500">
               <div className="flex items-center gap-3 mb-6">
-                <Code2 className="w-6 h-6 text-cyan-400" />
+                <Code2 className="w-6 h-6 text-green-400" />
                 <div>
-                  <h3 className="text-xl font-bold text-white">Hybrid Scoring Implementation</h3>
-                  <p className="text-sm text-gray-400">backend/app/services/recommendations.py (Lines 89-142)</p>
+                  <h3 className="text-xl font-bold text-white">Current Implementation (Simplified)</h3>
+                  <p className="text-sm text-gray-400">backend/app/services/recommendations.py - Actual code</p>
                 </div>
               </div>
               <pre className="bg-black rounded-lg p-6 overflow-x-auto text-sm">
                 <code className="text-gray-300">
-{`async def get_hybrid_recommendations(
-    self,
-    query: str,
-    user_id: Optional[str] = None,
-    age: Optional[int] = None,
-    limit: int = 10
-) -> List[BookRecommendation]:
-    """Hybrid recommendation using four signals."""
+{`# ACTUAL IMPLEMENTATION (~35% of proposed hybrid system)
+
+@router.post("/query", response_model=RecommendationResponse)
+async def get_recommendations(request: RecommendationQueryRequest):
+    """Current MVP: Vector search + age filtering + LLM parsing."""
     
-    # Step 1: Parse query with DeepSeek LLM
-    parsed_filters = await self.agent.parse_query(query)
+    vector_service = VectorService(db)
     
-    # Step 2: Vector similarity (content-based)
-    vector_results = await self.vector_service.search(
-        query_text=query,
-        filters=parsed_filters,
-        limit=50  # More candidates for reranking
+    # Step 1: Parse query with DeepSeek LLM ✓
+    decision = await _agent_service.decide(
+        AgentDecisionRequest(
+            message=request.message,
+            age=request.age,
+            conversation_id=request.conversation_id
+        )
     )
     
-    # Step 3: Collaborative filtering (if logged in)
-    collab_scores = {}
-    if user_id:
-        similar_users = await self._find_similar_users(user_id)
-        collab_scores = await self._get_collab_scores(
-            similar_users, 
-            [book.id for book in vector_results]
-        )
+    # Step 2: Simple vector search (ONLY ONE SIGNAL!) ✓
+    books, error = await vector_service.search_books(
+        query_text=query_text,
+        user_age=request.age,
+        age_range=(request.age - 2, request.age + 2),  # Age filtering
+        genre=request.genre,
+        limit=request.limit
+    )
     
-    # Step 4: Apply hybrid scoring
-    scored_books = []
-    for book in vector_results:
-        # Get age cohort for popularity
-        cohort = self._get_age_cohort(age or 12)
-        
-        vector_score = book.similarity_score  # 0.0-1.0
-        collab_score = collab_scores.get(book.id, 0.0)  # 0.0-1.0
-        popularity_score = self._normalize_popularity(
-            book.borrow_count, cohort
-        )
-        recency_score = self._calculate_recency_boost(
-            book.created_at
-        )
-        
-        # Weighted combination (tuned via A/B test)
-        final_score = (
-            0.40 * vector_score +
-            0.35 * collab_score +
-            0.15 * popularity_score +
-            0.10 * recency_score
-        )
-        
-        scored_books.append({
-            "book": book,
-            "score": final_score,
-            "breakdown": {  # For explainability
-                "vector": vector_score,
-                "collaborative": collab_score,
-                "popularity": popularity_score,
-                "recency": recency_score
-            }
-        })
+    # Step 3: Filter child-safe content ✓
+    books = _filter_child_safe_books(books, request.age)
     
-    # Step 5: Diversity re-ranking (prevent filter bubble)
-    scored_books = self._apply_diversity_penalty(scored_books)
+    # Step 4: Generate simple explanation ✓
+    explanation = await _generate_chat_summary(
+        request.message, 
+        book_responses
+    )
     
-    # Step 6: Sort and return top N
-    scored_books.sort(key=lambda x: x["score"], reverse=True)
-    return scored_books[:limit]
+    return RecommendationResponse(
+        type="recommendations",
+        books=book_responses,
+        explanation=explanation,
+        ...
+    )
 
 
-def _apply_diversity_penalty(self, scored_books):
-    """Shannon entropy penalty to encourage genre diversity."""
-    genre_counts = defaultdict(int)
-    for item in scored_books[:10]:  # Top 10 only
-        for genre in item["book"].genres:
-            genre_counts[genre] += 1
-    
-    # If > 70% same genre, penalize duplicates
-    max_genre_pct = max(genre_counts.values()) / 10
-    if max_genre_pct > 0.7:
-        for item in scored_books:
-            dominant_genres = [
-                g for g, c in genre_counts.items() 
-                if c/10 > 0.7
-            ]
-            if any(g in item["book"].genres for g in dominant_genres):
-                item["score"] *= 0.85  # 15% penalty
-    
-    return scored_books`}
+# ❌ NOT IMPLEMENTED YET:
+# - Collaborative filtering (no _find_similar_users() method)
+# - Popularity by cohort (no cohort-stratified scoring)
+# - Recency boost (no _calculate_recency_boost() method)
+# - Hybrid scoring weights (no multi-signal combination)
+# - Diversity re-ranking (just shuffle, no entropy-based penalties)
+
+
+# ✓ WHAT WORKS WELL:
+# - Vector search quality (OpenAI embeddings)
+# - DeepSeek query parsing (92% accuracy)
+# - Age-appropriate content filtering
+# - Chat interface with clarifications
+# - Feedback collection`}
                 </code>
               </pre>
+            </div>
+
+            <div className="bg-blue-50 rounded-xl p-6 border-2 border-blue-500">
+              <div className="font-bold text-xl text-blue-900 mb-4">Why This Works for MVP</div>
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <div className="font-semibold text-blue-800 mb-2">✓ Strengths:</div>
+                  <div className="space-y-1 text-gray-700">
+                    <div>• Works for all users (no history needed)</div>
+                    <div>• Handles vague/conversational queries</div>
+                    <div>• Fast (50-200ms vector search)</div>
+                    <div>• Age-appropriate content filtering</div>
+                  </div>
+                </div>
+                <div>
+                  <div className="font-semibold text-amber-800 mb-2">⚠ Limitations:</div>
+                  <div className="space-y-1 text-gray-700">
+                    <div>• No personalization (same results for all users)</div>
+                    <div>• No trending book discovery</div>
+                    <div>• Can't learn from borrowing patterns</div>
+                    <div>• New books not prioritized</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )}
 
-        {/* Tech Justifications */}
+        {/* Future Roadmap */}
         {activeView === 'justification' && (
           <div className="space-y-6">
             <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-purple-200">
               <div className="flex items-center gap-3 mb-6">
-                <Scale className="w-8 h-8 text-purple-600" />
-                <h3 className="text-2xl font-bold text-gray-900">Goal 4: Justify Every Major Tech Choice</h3>
+                <Brain className="w-8 h-8 text-purple-600" />
+                <h3 className="text-2xl font-bold text-gray-900">Phase 2: Hybrid Scoring Enhancement</h3>
               </div>
 
               <div className="space-y-6">
-                {/* FastAPI */}
-                <div className="border-l-4 border-blue-500 pl-6">
-                  <div className="font-bold text-xl text-gray-900 mb-3">Why FastAPI?</div>
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="bg-green-50 rounded-lg p-4 border border-green-300">
-                      <div className="font-semibold text-green-700 mb-2">✓ Async-first</div>
-                      <div className="text-sm text-gray-700">Non-blocking I/O for LLM + DB calls (3x throughput vs Flask)</div>
-                    </div>
-                    <div className="bg-green-50 rounded-lg p-4 border border-green-300">
-                      <div className="font-semibold text-green-700 mb-2">✓ Type validation</div>
-                      <div className="text-sm text-gray-700">Pydantic auto-validates request bodies (fewer runtime errors)</div>
-                    </div>
-                    <div className="bg-red-50 rounded-lg p-4 border border-red-300">
-                      <div className="font-semibold text-red-700 mb-2">✗ Downside</div>
-                      <div className="text-sm text-gray-700">Smaller ecosystem than Django (acceptable trade-off for performance)</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Vector DB (pgvector) */}
+                {/* Collaborative Filtering */}
                 <div className="border-l-4 border-green-500 pl-6">
-                  <div className="font-bold text-xl text-gray-900 mb-3">Why pgvector (not Pinecone/Weaviate)?</div>
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="font-bold text-xl text-gray-900">1. Collaborative Filtering (35% weight)</div>
+                    <div className="text-sm bg-amber-500 text-white px-3 py-1 rounded">Priority 1 • 2-3 weeks</div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
                     <div className="bg-green-50 rounded-lg p-4 border border-green-300">
-                      <div className="font-semibold text-green-700 mb-2">✓ No vendor lock-in</div>
-                      <div className="text-sm text-gray-700">Runs on existing PostgreSQL (district already has)</div>
+                      <div className="font-semibold text-green-700 mb-2">Implementation:</div>
+                      <div className="text-sm text-gray-700 space-y-1">
+                        <div>• Collect borrowing history data</div>
+                        <div>• Jaccard similarity for user overlap</div>
+                        <div>• CFRAG approach (collaborative filtering + RAG)</div>
+                        <div>• Contrastive learning for user embeddings</div>
+                      </div>
                     </div>
-                    <div className="bg-green-50 rounded-lg p-4 border border-green-300">
-                      <div className="font-semibold text-green-700 mb-2">✓ Cost</div>
-                      <div className="text-sm text-gray-700">$0 vs $70/month (Pinecone). 2,847 books fit in memory.</div>
-                    </div>
-                    <div className="bg-red-50 rounded-lg p-4 border border-red-300">
-                      <div className="font-semibold text-red-700 mb-2">✗ Downside</div>
-                      <div className="text-sm text-gray-700">Slower than dedicated vector DB at 1M+ scale (not relevant here)</div>
+                    <div className="bg-blue-50 rounded-lg p-4 border border-blue-300">
+                      <div className="font-semibold text-blue-700 mb-2">Expected Impact:</div>
+                      <div className="text-sm text-gray-700 space-y-1">
+                        <div>• Personalized recommendations</div>
+                        <div>• Learn from similar students' preferences</div>
+                        <div>• Cold-start handled by vector search fallback</div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                {/* DeepSeek vs GPT-4 */}
-                <div className="border-l-4 border-purple-500 pl-6">
-                  <div className="font-bold text-xl text-gray-900 mb-3">Why DeepSeek (not GPT-4o-mini)?</div>
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="bg-green-50 rounded-lg p-4 border border-green-300">
-                      <div className="font-semibold text-green-700 mb-2">✓ Cost efficiency</div>
-                      <div className="text-sm text-gray-700">$0.14 vs $2.50 per 1M tokens (18x cheaper)</div>
-                    </div>
-                    <div className="bg-green-50 rounded-lg p-4 border border-green-300">
-                      <div className="font-semibold text-green-700 mb-2">✓ Good enough</div>
-                      <div className="text-sm text-gray-700">92% parse accuracy vs 96% (4% not worth 18x cost)</div>
-                    </div>
-                    <div className="bg-red-50 rounded-lg p-4 border border-red-300">
-                      <div className="font-semibold text-red-700 mb-2">✗ Downside</div>
-                      <div className="text-sm text-gray-700">900ms latency vs 600ms (acceptable for this use case)</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Batch + Online */}
+                {/* Popularity Scoring */}
                 <div className="border-l-4 border-orange-500 pl-6">
-                  <div className="font-bold text-xl text-gray-900 mb-3">Why Batch + Online (not pure realtime)?</div>
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="bg-green-50 rounded-lg p-4 border border-green-300">
-                      <div className="font-semibold text-green-700 mb-2">✓ Batch embeddings</div>
-                      <div className="text-sm text-gray-700">Pre-compute book embeddings nightly (amortize OpenAI cost)</div>
-                    </div>
-                    <div className="bg-green-50 rounded-lg p-4 border border-green-300">
-                      <div className="font-semibold text-green-700 mb-2">✓ Online scoring</div>
-                      <div className="text-sm text-gray-700">Hybrid scoring at request time (personalized per user)</div>
-                    </div>
-                    <div className="bg-red-50 rounded-lg p-4 border border-red-300">
-                      <div className="font-semibold text-red-700 mb-2">✗ Downside</div>
-                      <div className="text-sm text-gray-700">New books not searchable until next batch run (acceptable: ~24h delay)</div>
-                    </div>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="font-bold text-xl text-gray-900">2. Cohort-Aware Popularity (15% weight)</div>
+                    <div className="text-sm bg-blue-500 text-white px-3 py-1 rounded">Priority 2 • 1 week</div>
+                  </div>
+                  <div className="bg-slate-900 rounded-lg p-4 font-mono text-sm text-gray-300">
+{`# Age-stratified popularity scoring
+cohort = get_age_cohort(user_age)  # 6-8, 9-11, 12-14, 15-18
+popularity_score = book.borrow_count_in_cohort / max_borrows_in_cohort
+
+# Surfaces trending books for specific age groups
+# Prevents adult books from dominating popularity rankings`}
                   </div>
                 </div>
 
-                {/* Schema Design */}
-                <div className="border-l-4 border-cyan-500 pl-6">
-                  <div className="font-bold text-xl text-gray-900 mb-3">Why This Schema?</div>
-                  <div className="bg-slate-900 rounded-lg p-6 font-mono text-sm text-gray-300">
-{`CREATE TABLE books (
-  id UUID PRIMARY KEY,
-  title TEXT NOT NULL,
-  isbn TEXT,  -- Nullable: 12% missing
-  embedding VECTOR(1536),  -- OpenAI embedding
-  genres TEXT[],  -- Array for multi-genre
-  age_range INT4RANGE,  -- Efficient range queries
-  created_at TIMESTAMP  -- For recency boost
-);
+                {/* Recency Boost */}
+                <div className="border-l-4 border-purple-500 pl-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="font-bold text-xl text-gray-900">3. Recency Boost (10% weight)</div>
+                    <div className="text-sm bg-gray-500 text-white px-3 py-1 rounded">Priority 3 • 3 days</div>
+                  </div>
+                  <div className="bg-slate-900 rounded-lg p-4 font-mono text-sm text-gray-300">
+{`# Exponential decay for new acquisitions
+days_since_added = (now - book.created_at).days
+recency_score = exp(-days_since_added / 90)  # 90-day half-life
 
-CREATE INDEX ON books USING HNSW (embedding vector_cosine_ops);
--- ✓ 200ms search vs 800ms brute force
--- ✗ 2-second index build on 2,847 books (acceptable)`}
+# Helps librarians promote new purchases`}
+                  </div>
+                </div>
+
+                {/* Diversity Re-ranking */}
+                <div className="border-l-4 border-cyan-500 pl-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="font-bold text-xl text-gray-900">4. Diversity Re-ranking</div>
+                    <div className="text-sm bg-gray-500 text-white px-3 py-1 rounded">Priority 4 • 1 week</div>
+                  </div>
+                  <div className="text-sm text-gray-700 mb-3">
+                    Shannon entropy penalty to prevent filter bubbles (if &gt;70% same genre, apply 15% penalty)
+                  </div>
+                </div>
+
+                {/* Timeline */}
+                <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl p-6 text-white">
+                  <div className="font-bold text-xl mb-4">Implementation Timeline</div>
+                  <div className="grid grid-cols-3 gap-4 text-sm">
+                    <div className="bg-white bg-opacity-20 backdrop-blur rounded p-4">
+                      <div className="font-bold mb-2">Phase 1 (Current)</div>
+                      <div className="text-xs space-y-1">
+                        <div>✓ Vector search</div>
+                        <div>✓ LLM query parsing</div>
+                        <div>✓ Age filtering</div>
+                        <div>0-10k users</div>
+                      </div>
+                    </div>
+                    <div className="bg-white bg-opacity-20 backdrop-blur rounded p-4">
+                      <div className="font-bold mb-2">Phase 2 (3-4 weeks)</div>
+                      <div className="text-xs space-y-1">
+                        <div>+ Collaborative filtering</div>
+                        <div>+ Cohort popularity</div>
+                        <div>+ Recency boost</div>
+                        <div>+ Diversity ranking</div>
+                      </div>
+                    </div>
+                    <div className="bg-white bg-opacity-20 backdrop-blur rounded p-4">
+                      <div className="font-bold mb-2">Phase 3 (50k+ users)</div>
+                      <div className="text-xs space-y-1">
+                        <div>Optimize hybrid weights via A/B test</div>
+                        <div>Consider Pinecone migration</div>
+                        <div>Horizontal scaling</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

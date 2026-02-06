@@ -16,12 +16,13 @@ export function TableOfContents({ activeSection, onToggle }: TableOfContentsProp
     { id: 'user-workflow', label: '4. User Workflow' },
     { id: 'architectural-decisions', label: '5. Architectural Decisions' },
     { id: 'recommendation-engine', label: '6. Hybrid Recommender' },
-    { id: 'governance', label: '7. Governance & Iteration' },
-    { id: 'authentication', label: '8. Authentication' },
-    { id: 'production-readiness', label: '9. Production Readiness' },
-    { id: 'rollout', label: '10. Rollout Plan' },
-    { id: 'conclusion', label: '11. Conclusion' },
-    { id: 'live-demo', label: '12. Live Demo →' }
+    { id: 'authentication', label: '7. Authentication' },
+    { id: 'production-readiness', label: '8. Production Readiness' },
+    { id: 'monitoring', label: '9. Monitoring & Observability' },
+    { id: 'governance', label: '10. Governance & Iteration' },
+    { id: 'rollout', label: '11. Rollout Plan' },
+    { id: 'conclusion', label: '12. Conclusion' },
+    { id: 'live-demo', label: '13. Live Demo →' }
   ];
 
   const scrollToSection = (id: string) => {

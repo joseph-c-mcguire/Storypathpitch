@@ -4,16 +4,16 @@ export function HybridRecommendations() {
   return (
     <div className="py-20 px-6 max-w-6xl mx-auto">
       <div className="mb-12">
-        <span className="text-blue-600 font-semibold uppercase text-sm tracking-wider">
+        <span className="text-orange-600 font-semibold uppercase text-sm tracking-wider">
           Recommendation Engine
         </span>
         <h2 className="text-4xl font-bold mt-2 mb-4">
           Hybrid Intelligence: Content + Collaborative Signals
         </h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded" />
+        <div className="w-20 h-1 bg-gradient-to-r from-orange-600 to-red-600 rounded" />
       </div>
 
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white mb-12">
+      <div className="bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl p-8 text-white mb-12">
         <h3 className="text-2xl font-bold mb-4">Two-Tower Architecture</h3>
         <p className="text-lg leading-relaxed mb-4">
           StoryPath combines the best of both worlds: <strong>semantic vector search</strong> to
@@ -80,17 +80,43 @@ export function HybridRecommendations() {
               <Users className="w-6 h-6 text-purple-600" />
             </div>
             <div>
-              <h3 className="text-xl font-bold">Collaborative Filtering</h3>
+              <h3 className="text-xl font-bold">CFRAG: Collaborative Filtering for RAG</h3>
               <span className="inline-block bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full mt-1">
-                ⏳ Planned (P1 Priority)
+                ⏳ Planned (P1 Priority - NOT Currently Implemented)
               </span>
             </div>
           </div>
           
-          <p className="text-gray-700 mb-4">
-            <strong>Who tends to like this?</strong>
+          <p className="text-gray-700 mb-2">
+            <strong>Who tends to like this?</strong> CFRAG integrates collaborative filtering into the RAG framework, using user interaction history to extract both explicit and implicit preferences that guide text generation.
+          </p>
+
+          <p className="text-sm text-gray-600 mb-4 italic">
+            📄 <a href="https://arxiv.org/abs/2504.05731" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Paper: "Collaborative Filtering for Retrieval Augmented Generation" (arXiv:2504.05731)</a>
           </p>
           
+          <div className="bg-purple-50 rounded-lg p-5 mb-4 border-2 border-purple-200">
+            <div className="font-bold text-purple-900 mb-3">🎯 CFRAG Approach:</div>
+            <ul className="space-y-2 text-sm text-gray-700">
+              <li className="flex items-start gap-2">
+                <span className="text-purple-600 font-bold">1.</span>
+                <span><strong>User Embedding Generation:</strong> Train user embeddings using contrastive learning on borrow history</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-purple-600 font-bold">2.</span>
+                <span><strong>Preference Extraction:</strong> Extract explicit (ratings) and implicit (borrow patterns) preferences from similar users</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-purple-600 font-bold">3.</span>
+                <span><strong>Personalized Retrieval:</strong> Custom retriever and reranker fetch documents from similar users' histories</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-purple-600 font-bold">4.</span>
+                <span><strong>RAG Integration:</strong> Feed collaborative signals into LLM generation to personalize explanations</span>
+              </li>
+            </ul>
+          </div>
+
           <ul className="space-y-3 text-sm text-gray-700 mb-6">
             <li className="flex items-start gap-2">
               <Rocket className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
@@ -102,18 +128,25 @@ export function HybridRecommendations() {
             </li>
             <li className="flex items-start gap-2">
               <Rocket className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
-              <span>User embeddings from aggregated borrow history</span>
+              <span>Similar user embeddings from aggregated borrow history</span>
             </li>
             <li className="flex items-start gap-2">
               <Rocket className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
-              <span>Privacy-safe pseudonymous IDs + k-anonymity thresholds</span>
+              <span>Privacy-safe pseudonymous IDs + k-anonymity thresholds (FERPA/COPPA compliant)</span>
             </li>
           </ul>
 
           <div className="bg-purple-50 rounded-lg p-4">
             <p className="text-sm text-gray-700">
               <strong>Example:</strong> 6th graders who loved "Percy Jackson" also borrowed
-              "Artemis Fowl" and "The Lightning Thief" → Surface these as socially-validated picks
+              "Artemis Fowl" and "The Lightning Thief" → CFRAG surfaces these as socially-validated picks and generates personalized explanations like "Students with similar reading tastes loved these adventure-fantasy hybrids."
+            </p>
+          </div>
+
+          <div className="mt-4 bg-orange-50 rounded-lg p-4 border-2 border-orange-300">
+            <div className="font-bold text-orange-900 mb-2">⚠️ Current State:</div>
+            <p className="text-sm text-gray-700">
+              StoryPath currently uses <strong>pure vector similarity search</strong> with OpenAI embeddings. CFRAG will be implemented in Phase 1 (P1) to add collaborative signals, validated against LaMP benchmark standards.
             </p>
           </div>
         </div>

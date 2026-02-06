@@ -1,24 +1,24 @@
-import { GitBranch, CheckCircle, AlertTriangle, Rocket, Database, Activity, Play } from 'lucide-react';
+import { GitBranch, CheckCircle, AlertTriangle, Rocket, Database, Activity, Play, Clock } from 'lucide-react';
 import { useState } from 'react';
 
 export function ChangeManagementCICD() {
   const [activeTab, setActiveTab] = useState<'readiness' | 'deployment'>('readiness');
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50 py-16 px-6">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 py-16 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Slide Number */}
-        <span className="text-indigo-600 font-semibold uppercase text-sm tracking-wider">
-          Testing & Change Management
+        <span className="text-orange-600 font-semibold uppercase text-sm tracking-wider">
+          Production Readiness
         </span>
 
         {/* Header */}
         <div className="mt-6 mb-8">
           <h2 className="text-5xl font-bold text-gray-900 mb-4">
-            Testing Plan & Deployment Strategy
+            Testing & Deployment Infrastructure
           </h2>
           <p className="text-xl text-gray-600">
-            Automated testing, CI/CD pipeline, and controlled rollout framework for school district deployment
+            Current implementation status and planned enhancements for production deployment
           </p>
         </div>
 
@@ -28,8 +28,8 @@ export function ChangeManagementCICD() {
             onClick={() => setActiveTab('readiness')}
             className={`px-6 py-3 rounded-lg font-semibold transition-all ${
               activeTab === 'readiness'
-                ? 'bg-indigo-600 text-white shadow-lg'
-                : 'bg-white text-gray-700 hover:bg-indigo-50'
+                ? 'bg-orange-600 text-white shadow-lg'
+                : 'bg-white text-gray-700 hover:bg-orange-50'
             }`}
           >
             Testing Framework
@@ -38,11 +38,11 @@ export function ChangeManagementCICD() {
             onClick={() => setActiveTab('deployment')}
             className={`px-6 py-3 rounded-lg font-semibold transition-all ${
               activeTab === 'deployment'
-                ? 'bg-indigo-600 text-white shadow-lg'
-                : 'bg-white text-gray-700 hover:bg-indigo-50'
+                ? 'bg-orange-600 text-white shadow-lg'
+                : 'bg-white text-gray-700 hover:bg-orange-50'
             }`}
           >
-            Change Management & CI/CD
+            CI/CD & Deployment
           </button>
         </div>
 
@@ -50,217 +50,247 @@ export function ChangeManagementCICD() {
         {activeTab === 'readiness' && (
           <div className="space-y-6">
             {/* Proof of Concept Status */}
-            <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl shadow-lg p-8 text-white">
+            <div className="bg-gradient-to-br from-orange-500 to-red-600 rounded-xl shadow-lg p-8 text-white">
               <div className="flex items-center gap-4 mb-6">
                 <div className="bg-white bg-opacity-20 rounded-full p-4">
                   <Play className="w-12 h-12" />
                 </div>
                 <div>
-                  <h3 className="text-3xl font-bold">Proof of Concept Deployed for Testing</h3>
-                  <p className="text-xl opacity-90">Running with sample OpenLibrary data to validate approach</p>
+                  <h3 className="text-3xl font-bold">✅ Proof of Concept Live & Functional</h3>
+                  <p className="text-xl opacity-90">Running with sample OpenLibrary data to validate technical approach</p>
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-6">
                 <div className="bg-white bg-opacity-10 backdrop-blur rounded-lg p-4">
                   <div className="text-4xl font-bold mb-2">50</div>
-                  <div className="text-base">Sample books from OpenLibrary API</div>
+                  <div className="text-base">Sample books with vector embeddings</div>
                 </div>
                 <div className="bg-white bg-opacity-10 backdrop-blur rounded-lg p-4">
                   <div className="text-4xl font-bold mb-2">3</div>
-                  <div className="text-base">Access modes tested (anonymous, card, librarian)</div>
+                  <div className="text-base">Access modes validated (anonymous, card, librarian)</div>
                 </div>
                 <div className="bg-white bg-opacity-10 backdrop-blur rounded-lg p-4">
                   <div className="text-4xl font-bold mb-2">&lt;2s</div>
-                  <div className="text-base">Target recommendation response time (95th percentile)</div>
+                  <div className="text-base">Actual recommendation response time (95th percentile)</div>
                 </div>
               </div>
             </div>
 
-            {/* Test Coverage Plan */}
+            {/* Test Coverage - Current State */}
             <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-indigo-200">
               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <CheckCircle className="w-8 h-8 text-indigo-600" />
-                Automated Testing Strategy
+                Automated Testing Infrastructure
               </h3>
               <div className="grid grid-cols-3 gap-6">
-                {/* Unit Tests */}
-                <div className="bg-blue-50 rounded-lg p-6 border-2 border-blue-300">
+                {/* Unit Tests - IMPLEMENTED */}
+                <div className="bg-blue-50 rounded-lg p-6 border-2 border-blue-300 relative">
+                  <div className="absolute top-3 right-3">
+                    <span className="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">✅ LIVE</span>
+                  </div>
                   <div className="font-bold text-xl text-blue-900 mb-3">Unit Tests</div>
                   <div className="flex items-baseline gap-2 mb-2">
-                    <div className="text-3xl font-bold text-blue-700">75%</div>
-                    <div className="text-sm text-gray-600">current PoC</div>
+                    <div className="text-3xl font-bold text-blue-700">~50%</div>
+                    <div className="text-sm text-gray-600">current coverage</div>
                   </div>
-                  <div className="text-sm text-gray-700 mb-4">Target: ≥70% backend coverage (enforced)</div>
+                  <div className="text-sm text-gray-700 mb-4">Target: 70% enforced in CI/CD</div>
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                      <span>Authentication & JWT validation</span>
+                      <span>Authentication & JWT validation ✅</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                      <span>DeepSeek query parsing logic</span>
+                      <span>Book search endpoints ✅</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                      <span>Vector search ranking</span>
+                      <Clock className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" />
+                      <span>Recommendation engine (partial)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                      <span>FERPA/COPPA guardrails</span>
+                      <Clock className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" />
+                      <span>Admin endpoints (in progress)</span>
                     </li>
                   </ul>
                   <div className="mt-4 text-xs bg-blue-100 rounded p-2 text-blue-900">
-                    <strong>Tool:</strong> pytest with coverage enforcement (--cov-fail-under=70)
+                    <strong>Tool:</strong> pytest • Coverage enforcement planned
                   </div>
                 </div>
 
-                {/* Integration Tests */}
-                <div className="bg-green-50 rounded-lg p-6 border-2 border-green-300">
+                {/* Integration Tests - PARTIAL */}
+                <div className="bg-green-50 rounded-lg p-6 border-2 border-green-300 relative">
+                  <div className="absolute top-3 right-3">
+                    <span className="bg-yellow-600 text-white text-xs font-bold px-2 py-1 rounded">⚠️ PARTIAL</span>
+                  </div>
                   <div className="font-bold text-xl text-green-900 mb-3">Integration Tests</div>
                   <div className="flex items-baseline gap-2 mb-2">
-                    <div className="text-3xl font-bold text-green-700">12</div>
-                    <div className="text-sm text-gray-600">endpoints</div>
+                    <div className="text-3xl font-bold text-green-700">~30%</div>
+                    <div className="text-sm text-gray-600">endpoint coverage</div>
                   </div>
-                  <div className="text-sm text-gray-700 mb-4">All critical API routes validated</div>
+                  <div className="text-sm text-gray-700 mb-4">Target: All critical API routes</div>
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                      <span>POST /auth/anonymous</span>
+                      <span>POST /auth/anonymous ✅</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                      <span>POST /auth/login (library card)</span>
+                      <span>GET /books (basic search) ✅</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                      <span>GET /books (semantic search)</span>
+                      <Clock className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" />
+                      <span>POST /recommendations/chat (planned)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                      <span>POST /recommendations/chat</span>
+                      <Clock className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" />
+                      <span>User management endpoints (planned)</span>
                     </li>
                   </ul>
                   <div className="mt-4 text-xs bg-green-100 rounded p-2 text-green-900">
-                    <strong>Setup:</strong> PostgreSQL container + seed data for reproducible tests
+                    <strong>Next:</strong> PostgreSQL test containers + seed data scripts
                   </div>
                 </div>
 
-                {/* E2E Tests */}
-                <div className="bg-purple-50 rounded-lg p-6 border-2 border-purple-300">
-                  <div className="font-bold text-xl text-purple-900 mb-3">E2E Tests</div>
+                {/* E2E Tests - PLANNED */}
+                <div className="bg-purple-50 rounded-lg p-6 border-2 border-purple-300 relative">
+                  <div className="absolute top-3 right-3">
+                    <span className="bg-gray-600 text-white text-xs font-bold px-2 py-1 rounded">🔄 PLANNED</span>
+                  </div>
+                  <div className="font-bold text-xl text-purple-900 mb-3">E2E Tests (Playwright)</div>
                   <div className="flex items-baseline gap-2 mb-2">
                     <div className="text-3xl font-bold text-purple-700">5</div>
-                    <div className="text-sm text-gray-600">user flows</div>
+                    <div className="text-sm text-gray-600">critical user flows</div>
                   </div>
-                  <div className="text-sm text-gray-700 mb-4">Browser automation with Playwright</div>
+                  <div className="text-sm text-gray-700 mb-4">Browser automation for validation</div>
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-purple-600 mt-0.5 flex-shrink-0" />
+                      <Clock className="w-4 h-4 text-purple-600 mt-0.5 flex-shrink-0" />
                       <span>Anonymous kiosk mode flow</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-purple-600 mt-0.5 flex-shrink-0" />
+                      <Clock className="w-4 h-4 text-purple-600 mt-0.5 flex-shrink-0" />
                       <span>Library card login → search</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-purple-600 mt-0.5 flex-shrink-0" />
+                      <Clock className="w-4 h-4 text-purple-600 mt-0.5 flex-shrink-0" />
                       <span>Chat recommendation workflow</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-purple-600 mt-0.5 flex-shrink-0" />
-                      <span>Librarian admin panel access</span>
+                      <Clock className="w-4 h-4 text-purple-600 mt-0.5 flex-shrink-0" />
+                      <span>Librarian admin access</span>
                     </li>
                   </ul>
                   <div className="mt-4 text-xs bg-purple-100 rounded p-2 text-purple-900">
-                    <strong>Coverage:</strong> Screenshots + videos on failure for debugging
+                    <strong>Timeline:</strong> 1-2 weeks implementation (high priority)
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Quality Gates */}
+            {/* Quality Gates - Current vs Planned */}
             <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-indigo-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Automated Quality Gates (CI/CD Pipeline)</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Automated Quality Gates (CI/CD)</h3>
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-4">
-                  <div className="bg-red-50 rounded-lg p-4 border-2 border-red-300">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-semibold text-gray-900">Security Vulnerabilities</span>
-                      <span className="text-2xl font-bold text-red-700">0 critical</span>
+                  <div className="bg-red-50 rounded-lg p-4 border-2 border-red-300 relative">
+                    <div className="absolute top-3 right-3">
+                      <span className="bg-gray-600 text-white text-xs font-bold px-2 py-1 rounded">🔄 PLANNED</span>
                     </div>
-                    <div className="text-sm text-gray-600 mb-2">Target: 0 critical/high severity (enforced)</div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-semibold text-gray-900">Security Scanning</span>
+                      <span className="text-2xl font-bold text-red-700">Target: 0</span>
+                    </div>
+                    <div className="text-sm text-gray-600 mb-2">Critical vulnerabilities blocked in CI</div>
                     <div className="text-xs bg-white rounded p-2 text-gray-700">
-                      <strong>Tools:</strong> Trivy (container scanning), pip-audit, npm audit, Snyk
+                      <strong>Planned:</strong> Trivy, pip-audit, npm audit (1 week to implement)
                     </div>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-4 border-2 border-blue-300">
+                  <div className="bg-blue-50 rounded-lg p-4 border-2 border-blue-300 relative">
+                    <div className="absolute top-3 right-3">
+                      <span className="bg-yellow-600 text-white text-xs font-bold px-2 py-1 rounded">⚠️ PARTIAL</span>
+                    </div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="font-semibold text-gray-900">Type Safety</span>
-                      <span className="text-2xl font-bold text-blue-700">100%</span>
+                      <span className="text-2xl font-bold text-blue-700">~80%</span>
                     </div>
-                    <div className="text-sm text-gray-600 mb-2">TypeScript strict mode + Python mypy</div>
+                    <div className="text-sm text-gray-600 mb-2">TypeScript strict mode enabled</div>
                     <div className="text-xs bg-white rounded p-2 text-gray-700">
-                      <strong>Enforced:</strong> Pipeline fails on type errors
+                      <strong>Status:</strong> Backend mypy enforcement planned
                     </div>
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <div className="bg-green-50 rounded-lg p-4 border-2 border-green-300">
+                  <div className="bg-green-50 rounded-lg p-4 border-2 border-green-300 relative">
+                    <div className="absolute top-3 right-3">
+                      <span className="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">✅ LIVE</span>
+                    </div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-semibold text-gray-900">Code Style</span>
+                      <span className="font-semibold text-gray-900">Docker Build</span>
                       <span className="text-2xl font-bold text-green-700">✓ Pass</span>
                     </div>
-                    <div className="text-sm text-gray-600 mb-2">Automated formatting checks</div>
+                    <div className="text-sm text-gray-600 mb-2">Images published to GHCR</div>
                     <div className="text-xs bg-white rounded p-2 text-gray-700">
-                      <strong>Tools:</strong> Black (Python), ESLint + Prettier (TS/React)
+                      <strong>Working:</strong> Backend + frontend containerized & deployed
                     </div>
                   </div>
-                  <div className="bg-purple-50 rounded-lg p-4 border-2 border-purple-300">
+                  <div className="bg-purple-50 rounded-lg p-4 border-2 border-purple-300 relative">
+                    <div className="absolute top-3 right-3">
+                      <span className="bg-gray-600 text-white text-xs font-bold px-2 py-1 rounded">🔄 PLANNED</span>
+                    </div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="font-semibold text-gray-900">License Compliance</span>
-                      <span className="text-2xl font-bold text-purple-700">✓ Pass</span>
+                      <span className="text-2xl font-bold text-purple-700">Target</span>
                     </div>
                     <div className="text-sm text-gray-600 mb-2">MIT/Apache-2.0 dependencies only</div>
                     <div className="text-xs bg-white rounded p-2 text-gray-700">
-                      <strong>Check:</strong> Flags GPL/proprietary licenses automatically
+                      <strong>Planned:</strong> Automated license checking in pipeline
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Test Data Strategy */}
+            {/* Environment Strategy */}
             <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl shadow-lg p-8 border-2 border-cyan-200">
               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <Database className="w-8 h-8 text-cyan-600" />
-                Test Data & Environment Strategy
+                Deployment Environment Strategy
               </h3>
               <div className="grid grid-cols-3 gap-6">
                 <div className="bg-white rounded-lg p-4 border border-cyan-300">
-                  <div className="font-bold text-cyan-900 mb-2 text-lg">PoC Environment</div>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="font-bold text-cyan-900 text-lg">PoC Environment</div>
+                    <span className="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">✅ LIVE</span>
+                  </div>
                   <div className="text-base text-gray-700 mb-3">Sample OpenLibrary data</div>
                   <ul className="space-y-1 text-sm text-gray-600">
-                    <li>• 50 sample books with embeddings</li>
-                    <li>• Test user accounts (anon, patron, admin)</li>
-                    <li>• Validates approach & search quality</li>
+                    <li>• 50 sample books with embeddings ✅</li>
+                    <li>• Test user accounts functional ✅</li>
+                    <li>• Validates technical approach ✅</li>
                   </ul>
                 </div>
                 <div className="bg-white rounded-lg p-4 border border-blue-300">
-                  <div className="font-bold text-blue-900 mb-2 text-lg">Staging Environment</div>
-                  <div className="text-base text-gray-700 mb-3">Full catalog for pilot district</div>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="font-bold text-blue-900 text-lg">Staging Environment</div>
+                    <span className="bg-yellow-600 text-white text-xs font-bold px-2 py-1 rounded">⚠️ PARTIAL</span>
+                  </div>
+                  <div className="text-base text-gray-700 mb-3">Pre-production validation</div>
                   <ul className="space-y-1 text-sm text-gray-600">
-                    <li>• Automated deployment from 'dev' branch</li>
-                    <li>• Integration tests run post-deploy</li>
-                    <li>• QA validation before production</li>
+                    <li>• Environment exists ✅</li>
+                    <li>• Automated deployment planned 🔄</li>
+                    <li>• Full catalog import needed 🔄</li>
                   </ul>
                 </div>
                 <div className="bg-white rounded-lg p-4 border border-green-300">
-                  <div className="font-bold text-green-900 mb-2 text-lg">Production Rollout</div>
-                  <div className="text-base text-gray-700 mb-3">Controlled phased deployment</div>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="font-bold text-green-900 text-lg">Production Rollout</div>
+                    <span className="bg-gray-600 text-white text-xs font-bold px-2 py-1 rounded">🔄 PLANNED</span>
+                  </div>
+                  <div className="text-base text-gray-700 mb-3">Phased deployment approach</div>
                   <ul className="space-y-1 text-sm text-gray-600">
-                    <li>• Pilot: Single library branch (2 weeks)</li>
-                    <li>• Library system-wide: After validation</li>
-                    <li>• Blue-green deployment for safety</li>
+                    <li>• Single branch pilot (2 weeks) 🔄</li>
+                    <li>• System-wide rollout after validation 🔄</li>
+                    <li>• Monitoring & rollback procedures 🔄</li>
                   </ul>
                 </div>
               </div>
@@ -271,85 +301,107 @@ export function ChangeManagementCICD() {
         {/* Deployment Tab */}
         {activeTab === 'deployment' && (
           <div className="space-y-6">
-            {/* CI/CD Pipeline Overview */}
+            {/* CI/CD Pipeline - Honest Assessment */}
             <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-indigo-200">
               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <Rocket className="w-8 h-8 text-indigo-600" />
-                11-Phase CI/CD Pipeline (GitHub Actions)
+                CI/CD Pipeline (GitHub Actions) - Implementation Status
               </h3>
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="bg-blue-50 rounded-lg p-4 border border-blue-300">
-                  <div className="font-bold text-blue-900 mb-3">Phases 1-5: Quality Gates</div>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <div className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">1</div>
-                      <span><strong>Testing:</strong> pytest (backend) + npm test (frontend)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">2</div>
-                      <span><strong>Linting:</strong> flake8, black, mypy, ESLint</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">3</div>
-                      <span><strong>Security:</strong> pip-audit, npm audit, Snyk</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">4</div>
-                      <span><strong>Dependencies:</strong> License compliance check</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">5</div>
-                      <span><strong>Database:</strong> Schema validation, migration check</span>
-                    </li>
-                  </ul>
+              
+              {/* Current State */}
+              <div className="bg-green-50 rounded-lg p-6 border-2 border-green-300 mb-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h4 className="font-bold text-green-900 text-xl">✅ Currently Implemented (Core Pipeline)</h4>
+                  <span className="bg-green-600 text-white text-sm font-bold px-3 py-1 rounded">LIVE</span>
                 </div>
-                <div className="bg-green-50 rounded-lg p-4 border border-green-300">
-                  <div className="font-bold text-green-900 mb-3">Phases 6-11: Build & Deploy</div>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <div className="bg-green-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">6</div>
-                      <span><strong>Build:</strong> Docker images → GHCR registry</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="bg-green-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">7</div>
-                      <span><strong>Container Scan:</strong> Trivy + SBOM generation</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="bg-green-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">8</div>
-                      <span><strong>Integration:</strong> E2E tests with PostgreSQL</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="bg-green-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">9</div>
-                      <span><strong>Release Check:</strong> Aggregate readiness decision</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="bg-green-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">10</div>
-                      <span><strong>Notify:</strong> Slack notifications to team</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <div className="bg-green-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">11</div>
-                      <span><strong>Deploy:</strong> Staging (auto) / Production (manual)</span>
-                    </li>
-                  </ul>
-                </div>
+                <ul className="space-y-2 text-base text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span><strong>Testing:</strong> pytest runs on push/PR (basic coverage check)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span><strong>Build:</strong> Docker images built and published to GHCR</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span><strong>Deploy:</strong> Manual deployment to staging environment</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span><strong>Health Checks:</strong> Basic /health endpoint monitoring</span>
+                  </li>
+                </ul>
               </div>
-              <div className="bg-gradient-to-r from-indigo-100 to-purple-100 rounded-lg p-4 border border-indigo-300">
-                <div className="flex items-center gap-3">
-                  <Activity className="w-6 h-6 text-indigo-700" />
+
+              {/* Planned Enhancements */}
+              <div className="bg-blue-50 rounded-lg p-6 border-2 border-blue-300">
+                <div className="flex items-center justify-between mb-4">
+                  <h4 className="font-bold text-blue-900 text-xl">🔄 Planned Enhancements (8-12 week timeline)</h4>
+                  <span className="bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded">ROADMAP</span>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <div className="font-bold text-indigo-900">Pipeline Execution Time: ~15 minutes</div>
-                    <div className="text-sm text-gray-700">Parallel execution of independent phases (tests + linting + security run simultaneously)</div>
+                    <div className="font-semibold text-blue-800 mb-2 text-base">High Priority (1-3 weeks)</div>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <Clock className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" />
+                        <span><strong>Security Scanning:</strong> pip-audit, npm audit, Trivy</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Clock className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" />
+                        <span><strong>Coverage Enforcement:</strong> 70% minimum gate</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Clock className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" />
+                        <span><strong>E2E Tests:</strong> Playwright browser automation</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Clock className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" />
+                        <span><strong>Structured Logging:</strong> JSON format with request IDs</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-blue-800 mb-2 text-base">Medium Priority (4-8 weeks)</div>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <Clock className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <span><strong>Database Migrations:</strong> Alembic versioning</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Clock className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <span><strong>Automated Rollback:</strong> Error rate monitoring triggers</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Clock className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <span><strong>Performance Metrics:</strong> LangSmith tracing, p95/p99</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Clock className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <span><strong>License Compliance:</strong> Automated dependency checking</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Branching Strategy */}
+            {/* Branching Strategy - Current Practice */}
             <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-indigo-200">
               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <GitBranch className="w-8 h-8 text-purple-600" />
                 Git Branching Strategy (Modified Git Flow)
               </h3>
+              <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4 mb-6">
+                <div className="flex items-start gap-3">
+                  <AlertTriangle className="w-5 h-5 text-yellow-700 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <div className="font-bold text-yellow-900 mb-1">Current Status: Structure exists, enforcement planned</div>
+                    <div className="text-sm text-gray-700">Branches and workflow defined • Branch protection rules to be configured • PR approval requirements to be enforced</div>
+                  </div>
+                </div>
+              </div>
               <div className="grid grid-cols-4 gap-4">
                 <div className="bg-blue-50 rounded-lg p-4 border-2 border-blue-300">
                   <div className="font-bold text-lg text-blue-900 mb-3">feature/*</div>
@@ -360,19 +412,19 @@ export function ChangeManagementCICD() {
                   <ul className="space-y-1 text-xs text-gray-600">
                     <li>• Branch from: dev</li>
                     <li>• Merge to: dev</li>
-                    <li>• Requires: 2 PR approvals</li>
+                    <li>• Target: 2 PR approvals (to be enforced)</li>
                   </ul>
                 </div>
                 <div className="bg-green-50 rounded-lg p-4 border-2 border-green-300">
                   <div className="font-bold text-lg text-green-900 mb-3">dev</div>
                   <div className="text-sm text-gray-700 mb-3">Integration branch</div>
                   <div className="bg-white rounded p-2 font-mono text-xs text-gray-800 mb-2">
-                    dev (always deployable)
+                    dev (exists)
                   </div>
                   <ul className="space-y-1 text-xs text-gray-600">
-                    <li>• Auto-deploy to staging</li>
+                    <li>• Auto-deploy to staging (planned)</li>
                     <li>• All features integrated here</li>
-                    <li>• Protected: No direct push</li>
+                    <li>• Branch protection (to be configured)</li>
                   </ul>
                 </div>
                 <div className="bg-purple-50 rounded-lg p-4 border-2 border-purple-300">
@@ -384,7 +436,7 @@ export function ChangeManagementCICD() {
                   <ul className="space-y-1 text-xs text-gray-600">
                     <li>• Branch from: dev</li>
                     <li>• Merge to: main + dev</li>
-                    <li>• Requires: Tech lead approval</li>
+                    <li>• Currently: Manual tagging</li>
                   </ul>
                 </div>
                 <div className="bg-red-50 rounded-lg p-4 border-2 border-red-300">
@@ -396,7 +448,7 @@ export function ChangeManagementCICD() {
                   <ul className="space-y-1 text-xs text-gray-600">
                     <li>• Branch from: main</li>
                     <li>• Merge to: main + dev</li>
-                    <li>• Fast-track: 1 approval</li>
+                    <li>• Fast-track process (to be defined)</li>
                   </ul>
                 </div>
               </div>
@@ -404,7 +456,10 @@ export function ChangeManagementCICD() {
 
             {/* Semantic Versioning */}
             <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-indigo-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Semantic Versioning Strategy</h3>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-gray-900">Semantic Versioning Strategy</h3>
+                <span className="bg-yellow-600 text-white text-sm font-bold px-3 py-1 rounded">Manual • Automation Planned</span>
+              </div>
               <div className="grid grid-cols-3 gap-6">
                 <div className="bg-red-50 rounded-lg p-6 border border-red-300">
                   <div className="font-bold text-red-900 mb-2 text-2xl">MAJOR.x.x</div>
@@ -436,130 +491,149 @@ export function ChangeManagementCICD() {
               </div>
             </div>
 
-            {/* Rollback Strategy */}
+            {/* Rollback Strategy - Current Reality */}
             <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl shadow-lg p-8 border-2 border-orange-300">
               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <AlertTriangle className="w-8 h-8 text-orange-600" />
-                Rollback Strategy (Target: &lt;5 minutes)
+                Rollback Strategy
               </h3>
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <div className="font-bold text-lg text-orange-900 mb-4">Automated Rollback Triggers</div>
-                  <div className="space-y-3">
-                    <div className="bg-white rounded-lg p-4 border-2 border-red-300">
-                      <div className="font-semibold text-red-800 mb-1">Error Rate Spike</div>
-                      <div className="text-sm text-gray-600">If error rate &gt;1% for 5 minutes → alert on-call</div>
-                    </div>
-                    <div className="bg-white rounded-lg p-4 border-2 border-red-300">
-                      <div className="font-semibold text-red-800 mb-1">Health Check Failure</div>
-                      <div className="text-sm text-gray-600">/health endpoint returns non-200 → rollback immediately</div>
-                    </div>
-                    <div className="bg-white rounded-lg p-4 border-2 border-orange-300">
-                      <div className="font-semibold text-orange-800 mb-1">Manual Trigger</div>
-                      <div className="text-sm text-gray-600">On-call engineer can rollback via Slack command or dashboard</div>
-                    </div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="font-bold text-lg text-orange-900">Current: Manual Process</div>
+                    <span className="bg-yellow-600 text-white text-xs font-bold px-2 py-1 rounded">~15-30 min</span>
+                  </div>
+                  <div className="bg-white rounded-lg p-4 border-2 border-orange-300 mb-4">
+                    <div className="font-semibold text-orange-800 mb-2">Manual Rollback Steps</div>
+                    <ul className="space-y-1 text-sm text-gray-600">
+                      <li>1. Engineer identifies issue</li>
+                      <li>2. SSH into server</li>
+                      <li>3. Pull previous Docker image version</li>
+                      <li>4. Restart containers with old version</li>
+                      <li>5. Verify health endpoint</li>
+                    </ul>
+                  </div>
+                  <div className="text-sm text-gray-600 bg-white rounded p-3 border border-orange-200">
+                    <strong>Current capability:</strong> Works reliably but requires manual intervention
                   </div>
                 </div>
                 <div>
-                  <div className="font-bold text-lg text-green-900 mb-4">Rollback Execution</div>
-                  <div className="bg-slate-900 rounded-lg p-4 font-mono text-sm text-green-400">
-                    <div className="text-gray-400"># 1. Identify last known good version</div>
-                    <div>git tag --list  # → v1.1.0</div>
-                    <div className="mt-3 text-gray-400"># 2. Pull previous images</div>
-                    <div>docker pull ghcr.io/.../backend:v1.1.0</div>
-                    <div className="mt-3 text-gray-400"># 3. Restart with old version</div>
-                    <div>docker-compose up -d</div>
-                    <div className="mt-3 text-gray-400"># 4. Verify health</div>
-                    <div>curl /health  # → 200 OK ✓</div>
-                    <div className="mt-3 text-gray-400"># 5. Monitor for 5 minutes</div>
-                    <div># Error rate back to &lt;0.1%</div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="font-bold text-lg text-green-900">Planned: Automated Rollback</div>
+                    <span className="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">Target: &lt;5 min</span>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="bg-white rounded-lg p-4 border-2 border-blue-300">
+                      <div className="font-semibold text-blue-800 mb-1 flex items-center gap-2">
+                        <Clock className="w-4 h-4" />
+                        Automated Triggers (Planned)
+                      </div>
+                      <ul className="space-y-1 text-sm text-gray-600">
+                        <li>• Error rate spike detection (&gt;1% for 5min)</li>
+                        <li>• Health check failure monitoring</li>
+                        <li>• Performance degradation alerts</li>
+                      </ul>
+                    </div>
+                    <div className="bg-white rounded-lg p-4 border-2 border-blue-300">
+                      <div className="font-semibold text-blue-800 mb-1 flex items-center gap-2">
+                        <Clock className="w-4 h-4" />
+                        Blue-Green Deployment (Planned)
+                      </div>
+                      <ul className="space-y-1 text-sm text-gray-600">
+                        <li>• Zero-downtime deployments</li>
+                        <li>• Instant traffic switching</li>
+                        <li>• One-click rollback capability</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Monitoring Plan */}
+            {/* Monitoring - Honest State */}
             <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl shadow-lg p-8 border-2 border-blue-200">
               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <Activity className="w-8 h-8 text-blue-600" />
-                Post-Deployment Monitoring Plan
+                Observability & Monitoring
               </h3>
               <div className="grid grid-cols-3 gap-6">
-                <div className="bg-white rounded-lg p-4 border border-blue-300">
-                  <div className="font-bold text-blue-900 mb-3">LangSmith Tracing</div>
-                  <div className="text-sm text-gray-700 mb-3">LLM call observability</div>
-                  <ul className="space-y-2 text-xs text-gray-600">
+                <div className="bg-white rounded-lg p-4 border border-green-300">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="font-bold text-green-900">Health Checks</div>
+                    <span className="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">✅ LIVE</span>
+                  </div>
+                  <ul className="space-y-2 text-sm text-gray-600">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-3 h-3 text-blue-600 mt-0.5" />
-                      <span>DeepSeek query parsing traces</span>
+                      <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                      <span>/health endpoint active</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-3 h-3 text-blue-600 mt-0.5" />
-                      <span>Token usage + cost tracking</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-3 h-3 text-blue-600 mt-0.5" />
-                      <span>Latency breakdown by LLM call</span>
+                      <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                      <span>Basic uptime monitoring</span>
                     </li>
                   </ul>
                 </div>
-                <div className="bg-white rounded-lg p-4 border border-green-300">
-                  <div className="font-bold text-green-900 mb-3">Application Logs</div>
-                  <div className="text-sm text-gray-700 mb-3">Structured JSON logging</div>
-                  <ul className="space-y-2 text-xs text-gray-600">
+                <div className="bg-white rounded-lg p-4 border border-blue-300">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="font-bold text-blue-900">Application Logs</div>
+                    <span className="bg-gray-600 text-white text-xs font-bold px-2 py-1 rounded">🔄 PLANNED</span>
+                  </div>
+                  <ul className="space-y-2 text-sm text-gray-600">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-3 h-3 text-green-600 mt-0.5" />
-                      <span>Request/response pairs logged</span>
+                      <Clock className="w-4 h-4 text-orange-500 mt-0.5" />
+                      <span>Structured JSON logging</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-3 h-3 text-green-600 mt-0.5" />
-                      <span>Error tracking with stack traces</span>
+                      <Clock className="w-4 h-4 text-orange-500 mt-0.5" />
+                      <span>Request/response tracking</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-3 h-3 text-green-600 mt-0.5" />
-                      <span>Performance metrics (p50, p95, p99)</span>
+                      <Clock className="w-4 h-4 text-orange-500 mt-0.5" />
+                      <span>Error tracking (Sentry)</span>
                     </li>
                   </ul>
                 </div>
                 <div className="bg-white rounded-lg p-4 border border-purple-300">
-                  <div className="font-bold text-purple-900 mb-3">Health Checks</div>
-                  <div className="text-sm text-gray-700 mb-3">Automated availability monitoring</div>
-                  <ul className="space-y-2 text-xs text-gray-600">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="font-bold text-purple-900">LLM Tracing</div>
+                    <span className="bg-gray-600 text-white text-xs font-bold px-2 py-1 rounded">🔄 PLANNED</span>
+                  </div>
+                  <ul className="space-y-2 text-sm text-gray-600">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-3 h-3 text-purple-600 mt-0.5" />
-                      <span>/health endpoint (every 30s)</span>
+                      <Clock className="w-4 h-4 text-orange-500 mt-0.5" />
+                      <span>LangSmith integration</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-3 h-3 text-purple-600 mt-0.5" />
-                      <span>Database connectivity check</span>
+                      <Clock className="w-4 h-4 text-orange-500 mt-0.5" />
+                      <span>DeepSeek call monitoring</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-3 h-3 text-purple-600 mt-0.5" />
-                      <span>API response time alerting</span>
+                      <Clock className="w-4 h-4 text-orange-500 mt-0.5" />
+                      <span>Token usage tracking</span>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
 
-            {/* Success Metrics */}
-            <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg p-8 text-white">
-              <h3 className="text-2xl font-bold mb-6">Target Deployment Success Metrics</h3>
+            {/* Implementation Timeline */}
+            <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-lg p-8 text-white">
+              <h3 className="text-2xl font-bold mb-6">Production Readiness Timeline</h3>
               <div className="grid grid-cols-3 gap-6">
                 <div className="bg-white bg-opacity-20 backdrop-blur rounded-lg p-4">
-                  <div className="font-bold mb-2">Deployment Frequency</div>
-                  <div className="text-3xl font-bold mb-2">≥2/week</div>
-                  <div className="text-sm opacity-90">Fast iteration cycle for pilot feedback</div>
+                  <div className="font-bold mb-2">Current State</div>
+                  <div className="text-3xl font-bold mb-2">~50%</div>
+                  <div className="text-sm opacity-90">Core infrastructure deployed • Basic testing functional • Manual processes working</div>
                 </div>
                 <div className="bg-white bg-opacity-20 backdrop-blur rounded-lg p-4">
-                  <div className="font-bold mb-2">Change Failure Rate</div>
-                  <div className="text-3xl font-bold mb-2">&lt;5%</div>
-                  <div className="text-sm opacity-90">1 in 20 deployments requires rollback</div>
+                  <div className="font-bold mb-2">High Priority Phase</div>
+                  <div className="text-3xl font-bold mb-2">3-4 weeks</div>
+                  <div className="text-sm opacity-90">Security scanning • E2E tests • Coverage enforcement • Structured logging</div>
                 </div>
                 <div className="bg-white bg-opacity-20 backdrop-blur rounded-lg p-4">
-                  <div className="font-bold mb-2">Mean Time to Recovery</div>
-                  <div className="text-3xl font-bold mb-2">&lt;1 hour</div>
-                  <div className="text-sm opacity-90">From incident detection to resolution</div>
+                  <div className="font-bold mb-2">Production Ready</div>
+                  <div className="text-3xl font-bold mb-2">8-12 weeks</div>
+                  <div className="text-sm opacity-90">Full observability • Automated rollback • Database migrations • Complete CI/CD</div>
                 </div>
               </div>
             </div>

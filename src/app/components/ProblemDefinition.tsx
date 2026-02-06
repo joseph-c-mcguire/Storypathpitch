@@ -10,7 +10,7 @@ export function ProblemDefinition() {
         </span>
 
         {/* Header */}
-        <div className="mt-4 mb-6">
+        <div className="mt-4 mb-8">
           <h2 className="text-4xl font-bold text-gray-900 mb-2">
             Before Building: Define Success
           </h2>
@@ -20,7 +20,7 @@ export function ProblemDefinition() {
         </div>
 
         {/* District/State/National Context */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
           <div className="text-xl font-bold text-gray-900 mb-4">Published Literacy Goals We're Supporting</div>
           <div className="grid grid-cols-3 gap-6">
             <div className="border-l-4 border-blue-600 pl-4">
@@ -57,27 +57,10 @@ export function ProblemDefinition() {
         </div>
 
         {/* Success Metrics Defined First */}
-        <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg p-6 text-white mb-6">
+        <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg p-6 text-white mb-8">
           <div className="text-xl font-bold mb-1">Success Metrics (Defined Before Building)</div>
           <div className="text-sm opacity-90 mb-4">
             <strong>The Strategy:</strong> Grade-level proficiency is a <em>lagging indicator</em>. We measure <em>leading indicators</em> that drive reading volume and engagement.
-          </div>
-          <div className="flex justify-center gap-4 flex-wrap mb-4">
-            <div className="bg-white bg-opacity-20 backdrop-blur rounded-lg p-4 w-60">
-              <div className="text-4xl font-bold mb-1">+30%</div>
-              <div className="font-semibold mb-1">Checkout Rate from Recommendations</div>
-              <div className="text-xs opacity-90">Baseline: 2.5 books/month → Target: 3.25</div>
-            </div>
-            <div className="bg-white bg-opacity-20 backdrop-blur rounded-lg p-4 w-60">
-              <div className="text-4xl font-bold mb-1">+35%</div>
-              <div className="font-semibold mb-1">Repeat Patrons</div>
-              <div className="text-xs opacity-90">60% → 81% of students return for another book within 1 month</div>
-            </div>
-            <div className="bg-white bg-opacity-20 backdrop-blur rounded-lg p-4 w-60">
-              <div className="text-4xl font-bold mb-1">24/7</div>
-              <div className="font-semibold mb-1">Weekly Active Readers</div>
-              <div className="text-xs opacity-90">Extend access beyond librarian hours</div>
-            </div>
           </div>
           <div className="bg-white bg-opacity-10 rounded-lg p-4">
             <div className="text-sm font-semibold mb-3">How Leading Indicators Drive the Lagging Goal:</div>
@@ -101,10 +84,6 @@ export function ProblemDefinition() {
                 <div className="text-base font-bold mb-1">Reading Volume ↑</div>
                 <div className="text-xs opacity-90">Correlates with proficiency gains</div>
               </div>
-            </div>
-            <div className="text-xs opacity-75 mt-3 text-center">
-              By making library discovery frictionless and personalized, we accelerate the path to Providence's 24%→50% target. 
-              <span className="italic ml-1">(Allington & Gabriel, 2012)</span>
             </div>
           </div>
         </div>

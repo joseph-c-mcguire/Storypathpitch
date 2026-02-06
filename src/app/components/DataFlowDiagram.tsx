@@ -4,7 +4,7 @@ export function DataFlowDiagram() {
   return (
     <div className="py-20 px-6 max-w-7xl mx-auto bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="mb-12">
-        <span className="text-purple-600 font-semibold uppercase text-sm tracking-wider">
+        <span className="text-orange-600 font-semibold uppercase text-sm tracking-wider">
           Slide 5
         </span>
         <h2 className="text-5xl font-bold mt-2 mb-4">
@@ -13,7 +13,7 @@ export function DataFlowDiagram() {
         <p className="text-xl text-gray-600">
           Request lifecycle from user to response
         </p>
-        <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded mt-4" />
+        <div className="w-20 h-1 bg-gradient-to-r from-orange-600 to-red-600 rounded mt-4" />
       </div>
 
       {/* System Architecture Overview */}
@@ -34,7 +34,7 @@ export function DataFlowDiagram() {
 
           {/* Frontend Layer */}
           <div className="w-full max-w-3xl">
-            <div className="bg-gradient-to-r from-blue-400 to-blue-500 text-white rounded-lg p-6 shadow-lg">
+            <div className="bg-gradient-to-r from-orange-400 to-orange-500 text-white rounded-lg p-6 shadow-lg">
               <div className="font-bold text-xl mb-3">FRONTEND (React + TypeScript)</div>
               <div className="grid grid-cols-2 gap-3 text-sm">
                 <div className="bg-white bg-opacity-20 rounded p-2">• Login/Auth UI</div>
